@@ -1,0 +1,204 @@
+fileFormatVersion: 2
+guid: 847ae7d4ea873b54489b8f098108c515
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Arm_Dog
+    100002: Base
+    100004: claws_b.L
+    100006: claws_b.R
+    100008: claws_f.L
+    100010: claws_f.R
+    100012: Ear.L
+    100014: Ear.R
+    100016: eye.L
+    100018: eye.R
+    100020: foot_b.L
+    100022: foot_b.R
+    100024: foot_f.L
+    100026: foot_f.R
+    100028: head
+    100030: Helper_foot_b.L
+    100032: Helper_foot_b.R
+    100034: Helper_shin_f.L
+    100036: Helper_shin_f.R
+    100038: hip_b.L
+    100040: hip_b.R
+    100042: hip_f.L
+    100044: hip_f.R
+    100046: JR_Terrier
+    100048: leg_b.L
+    100050: leg_b.R
+    100052: leg_f.L
+    100054: leg_f.R
+    100056: //RootNode
+    100058: mouth
+    100060: neck
+    100062: nose
+    100064: Root_bone
+    100066: shin_b.L
+    100068: shin_b.R
+    100070: shin_f.L
+    100072: shin_f.R
+    100074: Spine_01
+    100076: Spine_02
+    100078: Spine_03
+    100080: Spine_04
+    100082: Spine_05
+    100084: Spine_base
+    100086: tail_01
+    100088: tail_02
+    100090: tail_03
+    100092: tail_04
+    100094: thigh_b.L
+    100096: thigh_b.R
+    100098: thigh_f.L
+    100100: thigh_f.R
+    100102: tongue_1
+    100104: tongue_2
+    100106: tongue_3
+    100108: tongue_4
+    400000: Arm_Dog
+    400002: Base
+    400004: claws_b.L
+    400006: claws_b.R
+    400008: claws_f.L
+    400010: claws_f.R
+    400012: Ear.L
+    400014: Ear.R
+    400016: eye.L
+    400018: eye.R
+    400020: foot_b.L
+    400022: foot_b.R
+    400024: foot_f.L
+    400026: foot_f.R
+    400028: head
+    400030: Helper_foot_b.L
+    400032: Helper_foot_b.R
+    400034: Helper_shin_f.L
+    400036: Helper_shin_f.R
+    400038: hip_b.L
+    400040: hip_b.R
+    400042: hip_f.L
+    400044: hip_f.R
+    400046: JR_Terrier
+    400048: leg_b.L
+    400050: leg_b.R
+    400052: leg_f.L
+    400054: leg_f.R
+    400056: //RootNode
+    400058: mouth
+    400060: neck
+    400062: nose
+    400064: Root_bone
+    400066: shin_b.L
+    400068: shin_b.R
+    400070: shin_f.L
+    400072: shin_f.R
+    400074: Spine_01
+    400076: Spine_02
+    400078: Spine_03
+    400080: Spine_04
+    400082: Spine_05
+    400084: Spine_base
+    400086: tail_01
+    400088: tail_02
+    400090: tail_03
+    400092: tail_04
+    400094: thigh_b.L
+    400096: thigh_b.R
+    400098: thigh_f.L
+    400100: thigh_f.R
+    400102: tongue_1
+    400104: tongue_2
+    400106: tongue_3
+    400108: tongue_4
+    2100000: JR_Terrier
+    4300000: JR_Terrier
+    9500000: //RootNode
+    13700000: JR_Terrier
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: JR_Terrier
+    second: {fileID: 2100000, guid: 1e14009e000c7024ebed63d0af4d5d78, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 0
+    importBlendShapes: 0
+    importCameras: 0
+    importLights: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 0
+    keepQuads: 0
+    weldVertices: 0
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 0
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
