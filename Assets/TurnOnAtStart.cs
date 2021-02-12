@@ -9,5 +9,5 @@ public class TurnOnAtStart : MonoBehaviour
     void Start()
     {
         fadeIn.SetActive(true);
-    }
+    } 
 }
