@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class Restart : MonoBehaviour
 {
-
+    bool enabled = false;
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (enabled)
         {
             Application.LoadLevel(Application.loadedLevel);
         }   
     }
+    
 }
