@@ -63,7 +63,7 @@ public class ThirdPersonMovement : MonoBehaviour
         }
 
         float deltaRotation = (new Vector3(transform.rotation.x, transform.rotation.y, transform.rotation.z) - temp).magnitude;
-        Debug.Log(deltaRotation);
+        //Debug.Log(deltaRotation);
         //jump
         if (Input.GetButtonDown("Jump") && controller.isGrounded && !(anim.GetCurrentAnimatorStateInfo(0).IsName("Jump") || anim.GetCurrentAnimatorStateInfo(0).IsName("JumpRun")) && deltaRotation <= 0.020)
         {
@@ -79,7 +79,7 @@ public class ThirdPersonMovement : MonoBehaviour
             {
                 count++;
                 //Debug.Log(count);
-                Debug.Log(anim.GetFloat("ColliderCurve"));
+                //Debug.Log(anim.GetFloat("ColliderCurve"));
                 if (!anim.IsInTransition(0))
                 {
                     controller.center = new Vector3(controller.center.x, anim.GetFloat("ColliderCurve"), controller.center.z);
@@ -88,7 +88,7 @@ public class ThirdPersonMovement : MonoBehaviour
                 {
                     jumpBool = false;
                     jumping = false;
-                    Debug.Log("what");
+                    //Debug.Log("what");
                 }
                 else if (anim.GetFloat("ColliderCurve") > colliderY)
                 {
