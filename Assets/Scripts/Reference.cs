@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // Singelton component containing game data such as lists of quests, items, etc.
-// Any data you want to be globally available should probably go here.
+// Any data that doesn't change during play and you want to be globally available should probably go here.
 public class Reference : MonoBehaviour
 {
     // This code allows us to access Reference's methods and data by using Reference.Instance.<method/data name> from anywhere
@@ -59,6 +59,60 @@ public class Reference : MonoBehaviour
         {
             questsByID.Add(quest.id, quest);
             questsByName.Add(quest.internalName, quest);
+        }
+    }
+    #endregion
+
+    #region Quests
+    public Quest GetQuestByName(string internalName)
+    {
+        if (questsByName.ContainsKey(name))
+        {
+            return questsByName[name];
+        }
+        else
+        {
+            Debug.LogError("Attempted to get Quest by invalid name");
+            return null;
+        }
+    }
+    public Quest GetQuestByID(int id)
+    {
+        if (questsByID.ContainsKey(id))
+        {
+            return questsByID[id];
+        }
+        else
+        {
+            Debug.LogError("Attempted to get Quest by invalid ID");
+            return null;
+        }
+    }
+    #endregion
+
+    #region Items
+    public Item GetItemByName(string internalName)
+    {
+        if (itemsByName.ContainsKey(name))
+        {
+            return itemsByName[name];
+        }
+        else
+        {
+            Debug.LogError("Attempted to get Item by invalid name");
+            return null;
+        }
+    }
+    public Item GetItemByID(int id)
+    {
+        if (itemsByID.ContainsKey(id))
+        {
+            return itemsByID[id];
+        }
+        else
+        {
+            Debug.LogError("Attempted to get Item by invalid ID");
+            return null;
         }
     }
     #endregion
