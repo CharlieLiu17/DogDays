@@ -37,7 +37,7 @@ public class Quest : ScriptableObject
     }
     public virtual void OnSpeakToNPC()
     {
-
+        
     }
     #endregion
 }
