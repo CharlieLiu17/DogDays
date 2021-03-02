@@ -6,8 +6,13 @@ using UnityEngine;
 public class Item : ScriptableObject
 {
     public int id;
+
+    public Item item;
     public string displayName;
     public string internalName;
     public string description;
-    public Sprite sprite;
+    public Sprite sprite = null;
+    void receive() {
+        InventoryItem.instance.add(item);
+    }
 }
