@@ -12,7 +12,7 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: DefaultCompany
+  companyName: vgDev
   productName: Kali and Kobe!
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
@@ -608,10 +608,10 @@ PlayerSettings:
   facebookXfbml: 0
   facebookFrictionlessRequests: 1
   apiCompatibilityLevel: 6
-  cloudProjectId: dcff1577-40a0-4322-944f-2a1c52b2c02a
+  cloudProjectId: 
   framebufferDepthMemorylessMode: 0
-  projectName: Kali and Kobe!
-  organizationId: charlieliu2222_unity
+  projectName: 
+  organizationId: 
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0
