@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Retrieve Mustard Bottle
   m_EditorClassIdentifier: 
   id: 0
-  displayName: 
+  displayName: Retrieve the Hot Sauce Bottle!
   internalName: 
-  description: 
+  description: Tuna can't find her hot sauce, it seems. Go and find it.
   sprite: {fileID: 0}
   type: 0

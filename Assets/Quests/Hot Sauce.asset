@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4cfde289a19bbfb43a254bde33c2c683, type: 3}
-  m_Name: Data
+  m_Name: Hot Sauce
   m_EditorClassIdentifier: 
-  id: 0
-  displayName: 
+  id: 1
+  item: {fileID: 0}
+  displayName: Hot Sauce
   internalName: 
-  description: 
-  sprite: {fileID: 0}
+  description: Hot Sauce Bottle
+  sprite: {fileID: 21300000, guid: dd6fbeed44cdafa4e83593f842a775a4, type: 3}
