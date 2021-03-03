@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1332d6df9b93f7a40844f80e6417c5b6, type: 3}
+  m_Script: {fileID: 11500000, guid: 4cfde289a19bbfb43a254bde33c2c683, type: 3}
   m_Name: Bell
   m_EditorClassIdentifier: 
-  id: 0
+  id: 1
   displayName: Bell
   internalName: bell
-  description: Pretty cool.
+  description: This is for demo purposes.
   sprite: {fileID: 0}

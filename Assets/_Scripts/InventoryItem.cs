@@ -2,28 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InventoryItem : MonoBehaviour
+// Container class for an item stored in the player's inventory.
+public class InventoryItem
 {
-    public int space = 10;
-    public static InventoryItem instance;
-    void Awake() {
-        instance = this;
-    }
-    public List<Item> items = new List<Item>();
+    public Item item;
     public int amount;
 
-    public delegate void onItemChanged();
-    public onItemChanged onItemChangedCallback;
-    public void add(Item item) {
-        if (items.Count >= 20) {
-            Debug.Log(
-                "not enough space ;-;"
-            );
-            return;
-        }
-        items.Add(item);
-    }
-    public void remove(Item item) {
-        items.Remove(item);
+    public InventoryItem(Item item, int amount)
+    {
+        this.item = item;
+        this.amount = amount;
     }
 }
