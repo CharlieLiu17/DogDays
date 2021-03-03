@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class Human_Movement : MonoBehaviour
 {
-    Transform transform;
+    Transform thisTransform;
     Animator anim;
     NavMeshAgent agent;
     public float idleTime;
@@ -21,12 +21,13 @@ public class Human_Movement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        transform = GetComponent<Transform>();
+        thisTransform = GetComponent<Transform>();
         anim = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
         currentTransformIndex = Random.Range(0, NPC_Manager.Instance.locations.Length);
         currentLocation = NPC_Manager.Instance.locations[currentTransformIndex];
-        transform.position = currentLocation.transform.position;
+        thisTransform.position = currentLocation.transform.position;
+        Debug.Log(currentTransformIndex);
         currentLocation.isOccupied = true;
     }
 
