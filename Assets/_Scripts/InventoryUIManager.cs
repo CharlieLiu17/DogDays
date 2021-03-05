@@ -39,6 +39,10 @@ public class InventoryUIManager : MonoBehaviour
 
     // Fill inventory slots with all the items the player is carrying. Each slot manages their own appearance.
     public void UpdateInventoryUI() {
+        if (slots == null)
+        {
+            slots = itemsParent.GetComponentsInChildren<InventorySlot>();
+        }
         InventoryItem[] items = GameManager.Instance.GetAllItemsAsArray();
         Debug.Log("Updating Inventory UI");
         if (items.Length > slots.Length) // This shouldn't ever happen, but this is here in case it does
@@ -50,11 +54,17 @@ public class InventoryUIManager : MonoBehaviour
         int i;
         for (i = 0; i < slots.Length && i < items.Length; i++) // We fill out the slots with items, stopping when we run out of items or slots
         {
-            slots[i].AddItem(items[i]);
+            if (slots[i] != null)
+            {
+                slots[i].AddItem(items[i]);
+            }
         }
         for (; i < slots.Length; i++) // Make sure all other slots are empty
         {
-            slots[i].ClearSlot();
+            if (slots[i] != null)
+            {
+                slots[i].AddItem(items[i]);
+            }
         }
     }
 }

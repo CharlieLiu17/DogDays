@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4cfde289a19bbfb43a254bde33c2c683, type: 3}
-  m_Name: ExampleItem
+  m_Name: Default Item
   m_EditorClassIdentifier: 
   id: 0
-  displayName: Enter a name here.
-  internalName: Maybe an ID of sorts like exampleItem
-  description: Drag and drop this onto Reference's Items List!
-  sprite: {fileID: 0}
+  displayName: Default
+  internalName: default
+  description: This shouldn't ever appear or something is wrong!
+  sprite: {fileID: 21300000, guid: df646550bafb34bbc8544dc1cb378d6e, type: 3}

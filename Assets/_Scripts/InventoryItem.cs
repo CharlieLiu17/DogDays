@@ -11,6 +11,10 @@ public class InventoryItem
     public InventoryItem(Item item, int amount)
     {
         this.item = item;
+        if (this.item == null) // Default to 0 ID item
+        {
+            this.item = Reference.Instance.GetItemByID(0);
+        }
         this.amount = amount;
     }
 }

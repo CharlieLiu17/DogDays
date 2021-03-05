@@ -14,6 +14,11 @@ public class InventorySlot : MonoBehaviour
     }
 
     public void AddItem(InventoryItem inventoryItem) {
+        if (inventoryItem == null)
+        {
+            Debug.LogError("Attempted to add null item to player inventory");
+            return;
+        }
         this.inventoryItem = inventoryItem;
         icon.sprite = inventoryItem.item.sprite;
         icon.enabled = true;
