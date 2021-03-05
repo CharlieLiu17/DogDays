@@ -16,7 +16,6 @@ public class CameraSwitch : MonoBehaviour
     private void Start()
     {
         freeLookScript = thirdPersonCamera.GetComponent<CinemachineFreeLook>();
-        Cursor.visible = false;
     }
 
     // Update is called once per frame

@@ -5,8 +5,11 @@ using UnityEngine.UI;
 
 public class InventorySlot : MonoBehaviour
 {
-    public Image icon;
+    [SerializeField]
+    private Image icon;
 
+    [SerializeField]
+    private Sprite emptySprite; // Sprite to show when the slot is empty
     private InventoryItem inventoryItem;
 
     public Button removeButton;
@@ -21,7 +24,6 @@ public class InventorySlot : MonoBehaviour
             return;
         }
         this.inventoryItem = inventoryItem;
-        icon.enabled = true;
         removeButton.interactable = true;
         icon.sprite = inventoryItem.item.sprite;
     }
@@ -29,7 +31,7 @@ public class InventorySlot : MonoBehaviour
     public void ClearSlot() {
         inventoryItem = null;
         icon.sprite = null;
-        icon.enabled = false;
+        icon.sprite = emptySprite;
         removeButton.interactable = false;
     }
 
