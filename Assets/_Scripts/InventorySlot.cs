@@ -6,29 +6,28 @@ using UnityEngine.UI;
 public class InventorySlot : MonoBehaviour
 {
     public Image icon;
-    Item item1;
+    InventoryItem inventoryItem;
 
     public Button removeButton;
     public Image getIcon() {
         return this.icon;
     }
 
-    public void AddItem(Item newItem) {
-        item1 = newItem;
-        icon.sprite = item1.sprite;
+    public void AddItem(InventoryItem inventoryItem) {
+        this.inventoryItem = inventoryItem;
+        icon.sprite = inventoryItem.item.sprite;
         icon.enabled = true;
         removeButton.interactable = true;
-
     }
 
-    public void clearSlot() {
-        item1 = null;
+    public void ClearSlot() {
+        inventoryItem = null;
         icon.sprite = null;
         icon.enabled = false;
         removeButton.interactable = false;
     }
 
-    public void onRemoveButton() {
-        InventoryItem.instance.remove(item1);
+    public void OnRemoveButton() {
+        GameManager.Instance.RemoveItemFromInventory(inventoryItem);
     }
 }

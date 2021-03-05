@@ -23,7 +23,7 @@ public class Reference : MonoBehaviour
         {
             _instance = this;
         }
-        InitializeDictionaries();
+        Initialize();
     }
 
     private void OnDestroy()
@@ -47,18 +47,34 @@ public class Reference : MonoBehaviour
     private Dictionary<string, Quest> questsByName = null;
 
     // This is called in awake
-    private void InitializeDictionaries()
+    private void Initialize()
     {
+
         itemsByID = new Dictionary<int, Item>();
-        foreach (Item item in items) {
-            itemsByID.Add(item.id, item);
-            itemsByName.Add(item.internalName, item);
+        itemsByName = new Dictionary<string, Item>();
+        if (items != null) // These if statements prevent NREs when we have no items/quests set in the inspector
+        {
+            foreach (Item item in items)
+            {
+                if (item != null)
+                {
+                    itemsByID.Add(item.id, item);
+                    itemsByName.Add(item.internalName, item);
+                }
+            }
         }
         questsByID = new Dictionary<int, Quest>();
-        foreach (Quest quest in quests)
+        questsByName = new Dictionary<string, Quest>();
+        if (quests != null)
         {
-            questsByID.Add(quest.id, quest);
-            questsByName.Add(quest.internalName, quest);
+            foreach (Quest quest in quests)
+            {
+                if (quest != null)
+                {
+                    questsByID.Add(quest.id, quest);
+                    questsByName.Add(quest.internalName, quest);
+                }
+            }
         }
     }
     #endregion
