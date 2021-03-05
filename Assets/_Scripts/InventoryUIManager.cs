@@ -28,8 +28,8 @@ public class InventoryUIManager : MonoBehaviour
     #endregion
 
     [SerializeField]
-    private Transform itemsParent;
-    [SerializeField]
+    private GameObject itemsParent;
+    //[SerializeField] We apparently can't serialize this or it breaks?
     private InventorySlot[] slots;
     
     void Start()
@@ -43,27 +43,28 @@ public class InventoryUIManager : MonoBehaviour
         {
             slots = itemsParent.GetComponentsInChildren<InventorySlot>();
         }
+
         InventoryItem[] items = GameManager.Instance.GetAllItemsAsArray();
         Debug.Log("Updating Inventory UI");
         if (items.Length > slots.Length) // This shouldn't ever happen, but this is here in case it does
         {
             Debug.LogError("Player is carrying " + (items.Length - slots.Length) + " more items than their inventory capacity!");
+            Debug.Log("Slots Length: " + slots.Length);
+            Debug.Log("Items Length: " + items.Length);
         }
 
-        // This for-loop setup looks weird I know, but it works nicely so forgive me pls
-        int i;
-        for (i = 0; i < slots.Length && i < items.Length; i++) // We fill out the slots with items, stopping when we run out of items or slots
+        for (int i = 0; i < slots.Length && i < items.Length; i++) // We fill out the slots with items, stopping when we run out of items or slots
         {
             if (slots[i] != null)
             {
                 slots[i].AddItem(items[i]);
             }
         }
-        for (; i < slots.Length; i++) // Make sure all other slots are empty
+        for (int i = items.Length; i < slots.Length; i++) // Make sure all other slots are empty
         {
             if (slots[i] != null)
             {
-                slots[i].AddItem(items[i]);
+                slots[i].ClearSlot();
             }
         }
     }
