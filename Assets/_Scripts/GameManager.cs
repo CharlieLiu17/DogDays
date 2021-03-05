@@ -59,7 +59,8 @@ public class GameManager : MonoBehaviour
 
         // Testing inventory system
         AddItemToInventory(Reference.Instance.GetItemByID(1), 1);
-        AddItemToInventory(Reference.Instance.GetItemByID(2), 3);
+        AddItemToInventory(Reference.Instance.GetItemByID(0), 3);
+        AddItemToInventory(Reference.Instance.GetItemByID(2), 1);
     }
 
     #region Quests
