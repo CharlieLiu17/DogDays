@@ -42,6 +42,23 @@ public class GameManager : MonoBehaviour
     // Make sure this is = to the number of actual UI inventory slots
     public int InventoryCapacity { get; set; }
 
+    private bool cursorLocked;
+    public bool CursorLocked
+    {
+        get { return cursorLocked; }
+        set
+        {
+            cursorLocked = value;
+            if (value)
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+            } else
+            {
+                Cursor.lockState = CursorLockMode.None;
+            }
+        } 
+    }
+
     void Start()
     {
         if (inventory == null)
@@ -151,7 +168,7 @@ public class GameManager : MonoBehaviour
         }
         // Right now we're updating the display every time it changes. Once we have inventory be opened using a key we should call this method
         // then and only then. That goes for all the calls to UpdateInventoryUI you see in this file.
-        InventoryUIManager.Instance.UpdateInventoryUI();
+        UIManager.Instance.UpdateInventoryUI();
     }
     public void AddItemToInventory(InventoryItem inventoryItem)
     {
@@ -165,7 +182,7 @@ public class GameManager : MonoBehaviour
         {
             inventory.Add(inventoryItem);
         }
-        InventoryUIManager.Instance.UpdateInventoryUI();
+        UIManager.Instance.UpdateInventoryUI();
     }
     // Amount defaults to 1 because removing 0 doesn't make sense.
     public void RemoveItemFromInventory(Item item, int amount = 1)
@@ -186,7 +203,7 @@ public class GameManager : MonoBehaviour
                 inventory.Remove(correspondingEntry);
             }
         }
-        InventoryUIManager.Instance.UpdateInventoryUI();
+        UIManager.Instance.UpdateInventoryUI();
     }
     public void RemoveItemFromInventory(InventoryItem inventoryItem)
     {
@@ -201,7 +218,7 @@ public class GameManager : MonoBehaviour
         {
             inventory.Remove(correspondingEntry);
         }
-        InventoryUIManager.Instance.UpdateInventoryUI();
+        UIManager.Instance.UpdateInventoryUI();
     }
     public bool HasItem(Item item, int amount)
     {

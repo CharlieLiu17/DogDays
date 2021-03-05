@@ -46,31 +46,9 @@ public class CharacterManager : MonoBehaviour
     [SerializeField]
     private CinemachineFreeLook freeLookScript = null;
 
-    #region Cursor Locking
-    // Always use the property (CursorLocked) so we auto update the actual lock-state of the cursor
-    private bool cursorLocked;
-    public bool CursorLocked {
-        get { 
-            return cursorLocked; 
-        }
-        set {
-            cursorLocked = value;
-            if (cursorLocked)
-            {
-                Cursor.lockState = CursorLockMode.Locked;
-            }
-            else
-            {
-                Cursor.lockState = CursorLockMode.None;
-            }
-        }
-    }
-    #endregion
-
     private void Start()
     {
-        Cursor.visible = false;
-        CursorLocked = true;
+        GameManager.Instance.CursorLocked = true; // This also makes the cursor invisible
     }
 
     // Update is called once per frame

@@ -1,12 +1,12 @@
 ﻿
 using UnityEngine;
 
-public class InventoryUIManager : MonoBehaviour
+public class UIManager : MonoBehaviour
 {
     #region Singleton Code
-    private static InventoryUIManager _instance;
+    private static UIManager _instance;
 
-    public static InventoryUIManager Instance { get { return _instance; } }
+    public static UIManager Instance { get { return _instance; } }
 
     private void Awake()
     {
@@ -28,20 +28,43 @@ public class InventoryUIManager : MonoBehaviour
     #endregion
 
     [SerializeField]
-    private GameObject itemsParent;
+    private GameObject inventorySlots;
     //[SerializeField] We apparently can't serialize this or it breaks?
     private InventorySlot[] slots;
+
+    [SerializeField]
+    private GameObject inventoryMenu;
     
     void Start()
     {
-        slots = itemsParent.GetComponentsInChildren<InventorySlot>();
+        slots = inventorySlots.GetComponentsInChildren<InventorySlot>();
+    }
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Tab)) // Toggle inventory menu on Tab
+        {
+            if (inventoryMenu == null)
+            {
+                inventoryMenu = GameObject.Find("Inventory Menu");
+            }
+            inventoryMenu.SetActive(!inventoryMenu.activeSelf);
+            GameManager.Instance.CursorLocked = !inventoryMenu.activeSelf; // Cursor locked if inventory not visible, unlocked if visible
+        }
+        if (Input.GetKeyDown(KeyCode.Escape)) // Close inventory menu on Esc
+        {
+            if (inventoryMenu.activeSelf)
+            {
+                inventoryMenu.SetActive(false);
+                GameManager.Instance.CursorLocked = true;
+            }
+        }
     }
 
     // Fill inventory slots with all the items the player is carrying. Each slot manages their own appearance.
     public void UpdateInventoryUI() {
         if (slots == null)
         {
-            slots = itemsParent.GetComponentsInChildren<InventorySlot>();
+            slots = inventorySlots.GetComponentsInChildren<InventorySlot>();
         }
 
         InventoryItem[] items = GameManager.Instance.GetAllItemsAsArray();
