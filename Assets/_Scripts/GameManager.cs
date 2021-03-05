@@ -44,6 +44,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        Time.timeScale = 1f;
         if (inventory == null)
         {
             inventory = new List<InventoryItem>();
