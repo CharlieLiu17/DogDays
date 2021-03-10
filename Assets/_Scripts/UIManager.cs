@@ -29,11 +29,30 @@ public class UIManager : MonoBehaviour
 
     [SerializeField]
     private GameObject inventorySlots;
-    //[SerializeField] We apparently can't serialize this or it breaks?
-    private InventorySlot[] slots;
+
+    private InventorySlot[] slots; // This can't be serialized without breaking things
 
     [SerializeField]
     private GameObject inventoryMenu;
+
+    [SerializeField]
+    private GameObject itemPickupText;
+
+    private bool _itemPickupTextShown = false;
+    public bool ItemPickupTextShown {
+        get { return _itemPickupTextShown; }
+        set
+        {
+            _itemPickupTextShown = value;
+            if (itemPickupText == null)
+            {
+                Debug.LogError("UIManager does not have a reference to ItemPickupText");
+            } else
+            {
+                itemPickupText.SetActive(_itemPickupTextShown);
+            }
+        }
+    }
     
     void Start()
     {

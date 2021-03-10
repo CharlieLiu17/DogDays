@@ -187,7 +187,7 @@ public class GameManager : MonoBehaviour
     // Amount defaults to 1 because removing 0 doesn't make sense.
     public void RemoveItemFromInventory(Item item, int amount = 1)
     {
-        InventoryItem correspondingEntry = inventory.Find(invItem => invItem.item == item);
+        InventoryItem correspondingEntry = inventory.Find(i => i.item == item);
 
         // Player doesn't have the item
         if (correspondingEntry == null)
@@ -207,6 +207,11 @@ public class GameManager : MonoBehaviour
     }
     public void RemoveItemFromInventory(InventoryItem inventoryItem)
     {
+        if (inventoryItem == null)
+        {
+            Debug.LogError("Attempted to remove null item from inventory");
+            return;
+        }
         InventoryItem correspondingEntry = inventory.Find(invItem => invItem.item == inventoryItem.item);
 
         // Player doesn't have the item
@@ -219,6 +224,10 @@ public class GameManager : MonoBehaviour
             inventory.Remove(correspondingEntry);
         }
         UIManager.Instance.UpdateInventoryUI();
+        foreach (InventoryItem item in inventory)
+        {
+            Debug.Log(item.ToString());
+        }
     }
     public bool HasItem(Item item, int amount)
     {
