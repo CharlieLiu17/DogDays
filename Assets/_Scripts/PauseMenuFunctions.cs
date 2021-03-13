@@ -18,9 +18,11 @@ public class PauseMenuFunctions : MonoBehaviour
             if (GameIsPaused)
             {
                 Resume();
+                GameManager.Instance.CursorLocked = true;
             } else
             {
                 Pause();
+                GameManager.Instance.CursorLocked = false;
             }
         }
     }

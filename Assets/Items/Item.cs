@@ -11,4 +11,9 @@ public class Item : ScriptableObject
     public string internalName;
     public string description;
     public Sprite sprite = null;
+
+    public bool Equals(Item other)
+    {
+        return id == other.id;
+    }
 }

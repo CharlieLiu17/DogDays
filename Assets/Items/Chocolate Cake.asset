@@ -9,12 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08a10a183cb4bf14991c2a7ffff5e3b5, type: 3}
-  m_Name: Retrieve Mustard Bottle
+  m_Script: {fileID: 11500000, guid: 4cfde289a19bbfb43a254bde33c2c683, type: 3}
+  m_Name: Chocolate Cake
   m_EditorClassIdentifier: 
   id: 0
-  displayName: Retrieve the Hot Sauce Bottle!
+  displayName: Chocolate Cake
   internalName: 
-  description: Tuna can't find her hot sauce, it seems. Go and find it.
-  sprite: {fileID: 0}
-  type: 0
+  description: Yummy cake that's bad for me!
+  sprite: {fileID: 21300000, guid: a13c275b02b857f4fa875c8502495b3f, type: 3}

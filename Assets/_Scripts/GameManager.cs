@@ -169,6 +169,7 @@ public class GameManager : MonoBehaviour
         // Right now we're updating the display every time it changes. Once we have inventory be opened using a key we should call this method
         // then and only then. That goes for all the calls to UpdateInventoryUI you see in this file.
         UIManager.Instance.UpdateInventoryUI();
+        TriggerQuestEvent(QuestEvent.UPDATE);
     }
     public void AddItemToInventory(InventoryItem inventoryItem)
     {
@@ -183,6 +184,7 @@ public class GameManager : MonoBehaviour
             inventory.Add(inventoryItem);
         }
         UIManager.Instance.UpdateInventoryUI();
+        TriggerQuestEvent(QuestEvent.UPDATE);
     }
     // Amount defaults to 1 because removing 0 doesn't make sense.
     public void RemoveItemFromInventory(Item item, int amount = 1)

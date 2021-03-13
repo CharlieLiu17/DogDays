@@ -33,6 +33,10 @@ public class InventorySlot : MonoBehaviour
         {
             GameManager.Instance.RemoveItemFromInventory(inventoryItem);
         }
+    }
+
+    public void ClearSlotIterative() // special clear slot for removeitem, in order to stop recursive bug if we used clearSlot
+    {
         inventoryItem = null;
         icon.sprite = null;
         icon.sprite = emptySprite;
