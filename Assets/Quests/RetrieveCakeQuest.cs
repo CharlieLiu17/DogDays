@@ -1,0 +1,58 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using System;
+using UnityEngine;
+
+[System.Serializable]
+public class RetrieveCakeQuest : Quest //monobehavior "abstract class"
+{
+    [SerializeField]
+    private Item cakeItem;
+    [SerializeField]
+    private int amountNeeded;
+    private InventoryItem cakeInvItem;
+
+    private void Start()
+    {
+        cakeInvItem = new InventoryItem(cakeItem, amountNeeded); // the desired item of the quest
+    }
+
+    #region Quest Event Methods
+    // These are different events we can use to trigger quest progress. 
+
+    // Should be called infrequently and mainly used for resolving bugs.
+    // For example, in a fetch quest we might use this to resolve the case where OnObtainItem() doesn't trigger when it should
+    public override void OnUpdate()
+    {
+        Predicate<InventoryItem> predicate = FindItem;
+        if (Array.Find(GameManager.Instance.GetAllItemsAsArray(), predicate) != null)
+        {
+            OnComplete();
+        }
+
+    }
+    // Called when the quest is complete and runs some code for rewards, starting a new quest, etc.
+    // For example: you collect all 3 bells, OnComplete is called and gives you 500 Gold and a new quest to collect 5 whistles
+    public override void OnComplete()
+    {
+        Debug.Log("Great Job!");
+    }
+    public override void OnObtainItem()
+    {
+        OnComplete();
+    }
+    public override void OnEnterRegion()
+    {
+        return;
+    }
+    public override void OnSpeakToNPC()
+    {
+        return;
+    }
+    #endregion
+
+    public bool FindItem(InventoryItem invItem)
+    {
+        return invItem.Equals(cakeInvItem);
+    }
+}

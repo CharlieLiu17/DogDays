@@ -16,4 +16,4 @@ MonoBehaviour:
   displayName: Bell
   internalName: bell
   description: This is for demo purposes.
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 1e3e102970938204e81e4559b51b8f4b, type: 3}

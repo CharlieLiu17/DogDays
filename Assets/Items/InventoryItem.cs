@@ -22,4 +22,10 @@ public class InventoryItem
     {
         return this.item.displayName + " x" + this.amount;
     }
+
+    public bool Equals(InventoryItem other)
+    {
+        return (item.Equals(other.item) && amount.Equals(other.amount));
+    
+    }
 }

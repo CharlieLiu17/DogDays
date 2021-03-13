@@ -36,6 +36,9 @@ public class UIManager : MonoBehaviour
     private GameObject inventoryMenu;
 
     [SerializeField]
+    private GameObject pauseMenu;
+
+    [SerializeField]
     private GameObject itemPickupText;
 
     private bool _itemPickupTextShown = false;
@@ -60,7 +63,7 @@ public class UIManager : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab)) // Toggle inventory menu on Tab
+        if (Input.GetKeyDown(KeyCode.Tab) && !pauseMenu.activeSelf) // Toggle inventory menu on Tab
         {
             if (inventoryMenu == null)
             {
@@ -74,7 +77,6 @@ public class UIManager : MonoBehaviour
             if (inventoryMenu.activeSelf)
             {
                 inventoryMenu.SetActive(false);
-                GameManager.Instance.CursorLocked = true;
             }
         }
     }
@@ -97,16 +99,13 @@ public class UIManager : MonoBehaviour
 
         for (int i = 0; i < slots.Length && i < items.Length; i++) // We fill out the slots with items, stopping when we run out of items or slots
         {
-            if (slots[i] != null)
-            {
                 slots[i].AddItem(items[i]);
-            }
         }
         for (int i = items.Length; i < slots.Length; i++) // Make sure all other slots are empty
         {
             if (slots[i] != null)
             {
-                slots[i].ClearSlot();
+                slots[i].ClearSlotIterative();
             }
         }
     }
