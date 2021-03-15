@@ -1475,6 +1475,7 @@ MonoBehaviour:
   controller: {fileID: 1049594595}
   cam: {fileID: 0}
   anim: {fileID: 1593054298}
+  rb: {fileID: 0}
   colliderY: 1.17
   jumpBool: 0
   jumping: 0
@@ -1486,7 +1487,6 @@ MonoBehaviour:
   smoothTurnTime: 0.1
   gravity: 8
   moveDirection: {x: 0, y: 0, z: 0}
-  count: 0
 --- !u!4 &1049594597
 Transform:
   m_ObjectHideFlags: 0
@@ -2290,6 +2290,7 @@ MonoBehaviour:
   controller: {fileID: 1850000753}
   cam: {fileID: 0}
   anim: {fileID: 858645461}
+  rb: {fileID: 0}
   colliderY: 1.4
   jumpBool: 0
   jumping: 0
@@ -2301,7 +2302,6 @@ MonoBehaviour:
   smoothTurnTime: 0.1
   gravity: 8
   moveDirection: {x: 0, y: 0, z: 0}
-  count: 0
 --- !u!143 &1850000753
 CharacterController:
   m_ObjectHideFlags: 0
@@ -2430,9 +2430,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: d809bc6902817064a84deb809e37a91a, type: 3}
+  m_audioClip: {fileID: 8300000, guid: a9eeb9c7b02a3054699f6bbd65e52e75, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.326
+  m_Volume: 0.106
   m_Pitch: 1
   Loop: 1
   Mute: 0
