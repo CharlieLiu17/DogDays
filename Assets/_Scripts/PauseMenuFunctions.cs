@@ -18,11 +18,9 @@ public class PauseMenuFunctions : MonoBehaviour
             if (GameIsPaused)
             {
                 Resume();
-                GameManager.Instance.CursorLocked = true;
             } else
             {
                 Pause();
-                GameManager.Instance.CursorLocked = false;
             }
         }
     }
@@ -32,12 +30,15 @@ public class PauseMenuFunctions : MonoBehaviour
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = !GameIsPaused;
+        GameManager.Instance.CursorLocked = true;
+        Debug.Log("what's up");
     }
     public void Pause()
     {
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = !GameIsPaused;
+        GameManager.Instance.CursorLocked = false;
     }
     public void Restart()
     {

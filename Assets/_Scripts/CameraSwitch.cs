@@ -16,6 +16,7 @@ public class CameraSwitch : MonoBehaviour
     private void Start()
     {
         freeLookScript = thirdPersonCamera.GetComponent<CinemachineFreeLook>();
+        GameManager.Instance.CursorLocked = true;
     }
 
     // Update is called once per frame

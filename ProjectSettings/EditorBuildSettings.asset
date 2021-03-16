@@ -5,11 +5,11 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Downloaded Assets/FImpossible Creations/FBasic Assets/DEMO FBasic
       Assets/S_FBasic Demo  Draggable Example.unity
     guid: eee1070ae35e9da408ad8f010a9b3132
-  - enabled: 1
+  - enabled: 0
     path: Assets/Downloaded Assets/FImpossible Creations/FBasic Assets/DEMO FBasic
       Assets/S_FBasic Demo Scene.unity
     guid: 5e234d73e8548a0488cdd5e83c130256

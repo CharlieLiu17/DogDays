@@ -43,11 +43,11 @@ public class GameManager : MonoBehaviour
     public int InventoryCapacity { get; set; }
 
     private bool cursorLocked;
-    public bool CursorLocked
-    {
+    public bool CursorLocked { 
         get { return cursorLocked; }
         set
         {
+            Debug.Log("hello");
             cursorLocked = value;
             if (value)
             {

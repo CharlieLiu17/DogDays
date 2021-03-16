@@ -54,6 +54,7 @@ public class CharacterManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log("hey");
         // Switch dogs when F is pressed
         if(Input.GetKeyDown(KeyCode.F)) {
             if (freeLookScript.m_Follow  == kobeFollowTarget)
