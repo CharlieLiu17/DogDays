@@ -29,13 +29,19 @@ public class DialogueHandler : MonoBehaviour
 
     void Start()
     {
+        TextAsset textAsset = Resources.Load<TextAsset>("XML/DialogueXML");
+        XmlDocument xml = new XmlDocument();
+        xml.LoadXml(textAsset.text);
+        _currentDialogue = new DialogueEntry(xml.SelectSingleNode("DialogueEntries/" + dialogueName));
+
+        // Test Code
         List<DialogueOption> options = new List<DialogueOption>();
 
         DialogueEntry next = new DialogueEntry(this, "It worked! (That's a miracle!)", null);
 
         options.Add(new DialogueOption(this, "Test Option 1", null, next, null, true));
 
-        CurrentDialogue = new DialogueEntry(this, "This is test dialogue.", options);
+        _currentDialogue = new DialogueEntry(this, "This is test dialogue.", options);
     }
 
     void Update()
