@@ -27,7 +27,7 @@ public class Human_Movement : MonoBehaviour
         currentTransformIndex = Random.Range(0, NPC_Manager.Instance.locations.Length);
         currentLocation = NPC_Manager.Instance.locations[currentTransformIndex];
         thisTransform.position = currentLocation.transform.position;
-        Debug.Log(currentTransformIndex);
+        //Debug.Log(currentTransformIndex);
         currentLocation.isOccupied = true;
     }
 

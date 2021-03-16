@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Xml;
 using UnityEngine;
 
 // Singelton component containing game data such as lists of quests, items, etc.
@@ -40,7 +41,7 @@ public class Reference : MonoBehaviour
     private Item[] items;
 
     #region Dictionaries
-    // Used for getting items and quests by their name or ID
+    // Used for getting items, quests, and dialogue entries by their name or ID
     private Dictionary<int, Item> itemsByID = null;
     private Dictionary<string, Item> itemsByName = null;
     private Dictionary<int, Quest> questsByID = null;
@@ -49,7 +50,6 @@ public class Reference : MonoBehaviour
     // This is called in awake
     private void Initialize()
     {
-
         itemsByID = new Dictionary<int, Item>();
         itemsByName = new Dictionary<string, Item>();
         if (items != null) // These if statements prevent NREs when we have no items/quests set in the inspector

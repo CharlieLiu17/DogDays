@@ -1,5 +1,7 @@
 ﻿
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -41,6 +43,15 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private GameObject itemPickupText;
 
+    [SerializeField]
+    private Image dialoguePanel;
+
+    [SerializeField]
+    private List<DialogueButtonHandler> dialogueButtons;
+
+    [SerializeField]
+    private Text dialogueText;
+
     private bool _itemPickupTextShown = false;
     public bool ItemPickupTextShown {
         get { return _itemPickupTextShown; }
@@ -56,7 +67,28 @@ public class UIManager : MonoBehaviour
             }
         }
     }
-    
+
+    private bool _dialoguePanelShown = false;
+    public bool DialoguePanelShown
+    {
+        get { return _dialoguePanelShown; }
+        set
+        {
+            _dialoguePanelShown = value;
+            if (dialoguePanel == null)
+            {
+                dialoguePanel = GameObject.Find("Dialogue Panel").GetComponent<Image>();
+            }
+            dialoguePanel.enabled = _dialoguePanelShown;
+
+            if (dialogueText == null)
+            {
+                dialogueText = GameObject.Find("Dialogue Text").GetComponent<Text>();
+            }
+            dialogueText.enabled = _dialoguePanelShown;
+        }
+    }
+
     void Start()
     {
         slots = inventorySlots.GetComponentsInChildren<InventorySlot>();
@@ -89,7 +121,7 @@ public class UIManager : MonoBehaviour
         }
 
         InventoryItem[] items = GameManager.Instance.GetAllItemsAsArray();
-        Debug.Log("Updating Inventory UI");
+        //Debug.Log("Updating Inventory UI");
         if (items.Length > slots.Length) // This shouldn't ever happen, but this is here in case it does
         {
             Debug.LogError("Player is carrying " + (items.Length - slots.Length) + " more items than their inventory capacity!");
@@ -106,6 +138,44 @@ public class UIManager : MonoBehaviour
             if (slots[i] != null)
             {
                 slots[i].ClearSlotIterative();
+            }
+        }
+    }
+
+    public void DisplayDialogue(DialogueEntry entry)
+    {
+        // We can pass in a null entry to close the dialogue window
+        if (entry == null)
+        {
+            DialoguePanelShown = false;
+            for (int i = 0; i < dialogueButtons.Count; i++)
+            {
+                dialogueButtons[i].UpdateButton(false); // The button clears itself when no option is passed in to UpdateButton
+            }
+            return;
+        }
+
+        DialoguePanelShown = true;
+        dialogueText.text = entry.displayText;
+
+        if (entry.options != null)
+        {
+            for (int i = 0; i < dialogueButtons.Count; i++)
+            {
+                if (i < entry.options.Count)
+                {
+                    dialogueButtons[i].UpdateButton(true, entry.options[i]); // Associate each button with a dialogue option
+                } else
+                {
+                    dialogueButtons[i].UpdateButton(false); // The button clears itself when no option is passed in to UpdateButton
+                }
+            }
+        } 
+        else
+        {
+            for (int i = 0; i < dialogueButtons.Count; i++)
+            {
+                dialogueButtons[i].UpdateButton(false); // The button clears itself when no option is passed in to UpdateButton
             }
         }
     }
