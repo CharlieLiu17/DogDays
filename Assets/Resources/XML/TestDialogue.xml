@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<DialogueEntry>
+  <DisplayText>This is test dialogue with XML!!!</DisplayText>
+  <Options>
+    <Option>
+      <SelectOnEnterPressed>true</SelectOnEnterPressed>
+      <DisplayText>This is a test option (also with XML)!</DisplayText>
+      <NextDialogue></NextDialogue>
+    </Option>
+    <Option>
+      <SelectOnEnterPressed>false</SelectOnEnterPressed>
+      <DisplayText>This is a different test option that takes us to a different dialogue!</DisplayText>
+      <NextDialogue>TestDialogue2</NextDialogue>
+    </Option>
+  </Options>
+</DialogueEntry>

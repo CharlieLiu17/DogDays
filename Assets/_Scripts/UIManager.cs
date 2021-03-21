@@ -86,6 +86,13 @@ public class UIManager : MonoBehaviour
                 dialogueText = GameObject.Find("Dialogue Text").GetComponent<Text>();
             }
             dialogueText.enabled = _dialoguePanelShown;
+            if (value == false)
+            {
+                for (int i = 0; i < dialogueButtons.Count; i++)
+                {
+                    dialogueButtons[i].UpdateButton(false);
+                }
+            }
         }
     }
 

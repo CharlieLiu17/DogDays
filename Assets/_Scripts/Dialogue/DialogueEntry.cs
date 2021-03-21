@@ -10,10 +10,17 @@ public class DialogueEntry
 
     public DialogueHandler dialogueHandler; // The handler of the currently active dialogue
 
-    // Public constructor using XML
-    public DialogueEntry(XmlNode node)
+    public DialogueEntry(DialogueHandler dialogueHandler, XmlDocument xml)
     {
+        this.dialogueHandler = dialogueHandler;
+        this.displayText = xml.SelectSingleNode("DialogueEntry/DisplayText").InnerText;
 
+        this.options = new List<DialogueOption>();
+        XmlNodeList optionsNodes = xml.SelectNodes("DialogueEntry/Options/Option");
+        foreach (XmlNode node in optionsNodes)
+        {
+            options.Add(new DialogueOption(dialogueHandler, node));
+        }
     }
 
     public DialogueEntry(DialogueHandler dialogueHandler, string displayText, List<DialogueOption> options)
