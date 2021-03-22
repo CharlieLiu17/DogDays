@@ -25,10 +25,10 @@ public class Human_Movement : MonoBehaviour
         anim = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
         currentTransformIndex = Random.Range(0, NPC_Manager.Instance.locations.Length);
-        currentLocation = NPC_Manager.Instance.locations[currentTransformIndex];
-        thisTransform.position = currentLocation.transform.position;
+        //currentLocation = NPC_Manager.Instance.locations[currentTransformIndex];
+        thisTransform.position = NPC_Manager.Instance.locations[currentTransformIndex].transform.position;
         //Debug.Log(currentTransformIndex);
-        currentLocation.isOccupied = true;
+        NPC_Manager.Instance.locations[currentTransformIndex].isOccupied = true;
     }
 
     // Update is called once per frame
@@ -41,7 +41,7 @@ public class Human_Movement : MonoBehaviour
         }
         if (timer >= idleTime)
         {
-            currentLocation.isOccupied = false;
+            NPC_Manager.Instance.locations[currentTransformIndex].isOccupied = false;
             //loop until it reaches a not occupied spot
             if (currentTransformIndex == NPC_Manager.Instance.locations.Length - 1)
             {
@@ -87,5 +87,20 @@ public class Human_Movement : MonoBehaviour
             }
             moveSwitch = false;
         } 
+    }
+
+    public void setCurrentTransformationIndex(int index)
+    {
+        currentTransformIndex = index;
+    }
+
+    public void setCurrentLocation(HumanLocation location)
+    {
+        currentLocation = location;
+    }
+
+    public void setTransform(Transform transform)
+    {
+        thisTransform.position = transform.position;
     }
 }
