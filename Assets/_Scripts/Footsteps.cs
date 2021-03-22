@@ -21,7 +21,6 @@ public class Footsteps : MonoBehaviour
         //checks for ground underneath, 0.3 is to account for transform's low position
         if (Physics.Raycast(transform.position + new Vector3(0f, 0.3f, 0f), Vector3.down, out hit))
         {
-            Debug.Log("Woah");
             if (hit.transform.tag == "Wood") //the players .gameObject is there because i'm not sure if you have it set to a transform, if it's a GameObject then you can be rid of it :)
             {
 
