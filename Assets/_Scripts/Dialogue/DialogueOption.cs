@@ -37,6 +37,15 @@ public class DialogueOption
         nextDialogue = node.SelectSingleNode("NextDialogue").InnerText;
     }
 
+    public void AddEvent(XmlNode eventNode)
+    {
+        if (events == null)
+        {
+            events = new List<DialogueEvent>();
+        }
+        events.Add(new DialogueEvent(eventNode));
+    }
+
     public void OnSelect()
     {
         // If any condition false, stop execution. This shouldn't ever happen since the button should be disabled, but hey
