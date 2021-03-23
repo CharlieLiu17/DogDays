@@ -19,7 +19,15 @@ public class DialogueEntry
         XmlNodeList optionsNodes = xml.SelectNodes("DialogueEntry/Options/Option");
         foreach (XmlNode node in optionsNodes)
         {
-            options.Add(new DialogueOption(dialogueHandler, node));
+            DialogueOption option = new DialogueOption(dialogueHandler, node);
+
+            XmlNodeList eventsNodes = node.SelectNodes("Events/Event");
+            foreach (XmlNode eNode in eventsNodes)
+            {
+                option.AddEvent(eNode);
+            }
+
+            options.Add(option);
         }
     }
 

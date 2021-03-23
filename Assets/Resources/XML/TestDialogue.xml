@@ -4,8 +4,14 @@
   <Options>
     <Option>
       <SelectOnEnterPressed>true</SelectOnEnterPressed>
-      <DisplayText>This is a test option (also with XML)!</DisplayText>
+      <DisplayText>This is a test option that adds a Quest!</DisplayText>
       <NextDialogue></NextDialogue>
+      <Events>
+        <Event>
+          <Type>GiveQuest</Type>
+          <QuestID>0</QuestID>
+        </Event>
+      </Events>
     </Option>
     <Option>
       <SelectOnEnterPressed>false</SelectOnEnterPressed>
