@@ -36,6 +36,7 @@ public class NPC_Manager : MonoBehaviour
     {
         for (int i = 0; i < npcs.Length; i++)
         {
+
         }
     }
 
