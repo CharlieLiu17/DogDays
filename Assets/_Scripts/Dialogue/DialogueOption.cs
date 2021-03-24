@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Xml;
 using UnityEngine;
 
 public class DialogueOption
@@ -7,8 +8,8 @@ public class DialogueOption
     public string displayText; // Text displayed on the corresponding option button
 
     // Dialogue entry that appears when this option is selected
-    public string nextDialogueName;
-    public DialogueEntry nextDialogue;
+    public DialogueEntry nextDialogueEntry;
+    public string nextDialogue;
 
     public bool selectOnEnterPressed; // Whether this option will be automatically chosen when the Enter key is pressed. UIManager handles this
     public List<DialogueEvent> events; // Events that happen at the moment this option is selected
@@ -16,27 +17,33 @@ public class DialogueOption
 
     public DialogueHandler dialogueHandler; // The handler of the currently active dialogue
 
-    public DialogueOption(DialogueHandler dialogueHandler, string displayText = "Ok", List<DialogueEvent> events = null, DialogueEntry nextDialogue = null, 
+    public DialogueOption(DialogueHandler dialogueHandler, string displayText = "Ok", List<DialogueEvent> events = null, DialogueEntry nextDialogueEntry = null, 
         List<DialogueCondition> conditions = null, bool selectOnEnterPressed = false)
     {
         this.displayText = displayText;
         this.events = events;
-        this.nextDialogue = nextDialogue;
+        this.nextDialogueEntry = nextDialogueEntry;
         this.conditions = conditions;
         this.selectOnEnterPressed = selectOnEnterPressed;
         this.dialogueHandler = dialogueHandler;
     }
 
-    // Constructor using string for next dialogue (to be used once XML is working)
-    public DialogueOption(string displayText, DialogueHandler dialogueHandler, List<DialogueEvent> events = null, string nextDialogueName = null,
-        List<DialogueCondition> conditions = null, bool selectOnEnterPressed = false)
+    public DialogueOption(DialogueHandler dialogueHandler, XmlNode node)
     {
-        this.displayText = displayText;
-        this.events = events;
-        this.nextDialogueName = nextDialogueName;
-        this.conditions = conditions;
-        this.selectOnEnterPressed = selectOnEnterPressed;
         this.dialogueHandler = dialogueHandler;
+
+        displayText = node.SelectSingleNode("DisplayText").InnerText;
+        selectOnEnterPressed = XmlConvert.ToBoolean(node.SelectSingleNode("SelectOnEnterPressed").InnerText);
+        nextDialogue = node.SelectSingleNode("NextDialogue").InnerText;
+    }
+
+    public void AddEvent(XmlNode eventNode)
+    {
+        if (events == null)
+        {
+            events = new List<DialogueEvent>();
+        }
+        events.Add(new DialogueEvent(eventNode));
     }
 
     public void OnSelect()
@@ -47,7 +54,7 @@ public class DialogueOption
             return;
         }
 
-        dialogueHandler.CurrentDialogue = nextDialogue;
+        dialogueHandler.DialogueName = nextDialogue;
 
         if (events != null)
         {

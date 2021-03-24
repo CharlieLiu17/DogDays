@@ -30,7 +30,16 @@ public class NPC_Manager : MonoBehaviour
     #endregion
 
     public HumanLocation[] locations;
-    
+    public Human_Movement[] npcs;
+
+    public void Start()
+    {
+        for (int i = 0; i < npcs.Length; i++)
+        {
+
+        }
+    }
+
 }
 
 [System.Serializable]

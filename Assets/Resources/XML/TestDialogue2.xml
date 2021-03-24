@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<DialogueEntry>
+  <DisplayText>This is working surprisingly well!</DisplayText>
+  <Options>
+    <Option>
+      <SelectOnEnterPressed>true</SelectOnEnterPressed>
+      <DisplayText>Let's close the dialogue window now and make sure that works fine.</DisplayText>
+      <NextDialogue></NextDialogue>
+    </Option>
+  </Options>
+</DialogueEntry>
