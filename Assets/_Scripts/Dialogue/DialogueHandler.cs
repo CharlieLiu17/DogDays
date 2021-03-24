@@ -29,10 +29,15 @@ public class DialogueHandler : MonoBehaviour
 
     void Start()
     {
+<<<<<<< Updated upstream
         TextAsset textAsset = Resources.Load<TextAsset>("XML/DialogueXML");
         XmlDocument xml = new XmlDocument();
         xml.LoadXml(textAsset.text);
         _currentDialogue = new DialogueEntry(xml.SelectSingleNode("DialogueEntries/" + dialogueName));
+=======
+        GetCurrentDialogueFromXML();
+        //DisplayCurrentDialogue();
+>>>>>>> Stashed changes
 
         // Test Code
         List<DialogueOption> options = new List<DialogueOption>();
