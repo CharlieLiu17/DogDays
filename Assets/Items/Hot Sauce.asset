@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cfde289a19bbfb43a254bde33c2c683, type: 3}
+  m_Name: Hot Sauce
+  m_EditorClassIdentifier: 
+  id: 2
+  displayName: Hot Sauce Bottle
+  internalName: Hot Sauce Bottle
+  description: Tuna's Hot Sauce! She needs it for her poor taste buds!
+  sprite: {fileID: 21300000, guid: eb15f76bee2c6224c987f396bde2eb1e, type: 3}

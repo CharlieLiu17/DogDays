@@ -6,51 +6,65 @@ using UnityEngine;
 // Attached to a dialogue source like an NPC and given a DialogueEntry.
 public class DialogueHandler : MonoBehaviour
 {
-    private DialogueEntry _currentDialogue;
+    private DialogueEntry currentDialogue;
 
     [SerializeField]
-    private string dialogueName;
+    private string _dialogueName;
 
-    public DialogueEntry CurrentDialogue
+    public string DialogueName
     {
-        get { return _currentDialogue; }
+        get { return _dialogueName; }
         set
         {
-            _currentDialogue = value;
-            if (_currentDialogue == null)
+            _dialogueName = value;
+            if (_dialogueName == string.Empty || _dialogueName == null)
             {
                 UIManager.Instance.DialoguePanelShown = false;
-            } else
+            }
+            else
             {
+                GetCurrentDialogueFromXML();
                 DisplayCurrentDialogue();
             }
         }
     }
 
+    private void GetCurrentDialogueFromXML()
+    {
+        // Will this work on all computers? I hope so D:
+        TextAsset xmlText = Resources.Load<TextAsset>("XML/" + _dialogueName);
+        if (xmlText == null)
+        {
+            Debug.LogError("Could not find Dialogue XML file with path \"XML/" + _dialogueName + "\"");
+            return;
+        }
+        XmlDocument xml = new XmlDocument();
+        xml.LoadXml(xmlText.text);
+        currentDialogue = new DialogueEntry(this, xml);
+    }
+
     void Start()
     {
-        TextAsset textAsset = Resources.Load<TextAsset>("XML/DialogueXML");
-        XmlDocument xml = new XmlDocument();
-        xml.LoadXml(textAsset.text);
-        _currentDialogue = new DialogueEntry(xml.SelectSingleNode("DialogueEntries/" + dialogueName));
+        GetCurrentDialogueFromXML();
+        DisplayCurrentDialogue();
 
         // Test Code
-        List<DialogueOption> options = new List<DialogueOption>();
+        /*List<DialogueOption> options = new List<DialogueOption>();
 
         DialogueEntry next = new DialogueEntry(this, "It worked! (That's a miracle!)", null);
 
         options.Add(new DialogueOption(this, "Test Option 1", null, next, null, true));
 
-        _currentDialogue = new DialogueEntry(this, "This is test dialogue.", options);
+        _currentDialogue = new DialogueEntry(this, "This is test dialogue.", options);*/
     }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            if (_currentDialogue.options != null)
+            if (currentDialogue.options != null)
             {
-                foreach (DialogueOption option in _currentDialogue.options)
+                foreach (DialogueOption option in currentDialogue.options)
                 {
                     if (option.selectOnEnterPressed)
                     {
@@ -63,6 +77,6 @@ public class DialogueHandler : MonoBehaviour
 
     public void DisplayCurrentDialogue()
     {
-        UIManager.Instance.DisplayDialogue(_currentDialogue);
+        UIManager.Instance.DisplayDialogue(currentDialogue);
     }
 }

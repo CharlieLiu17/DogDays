@@ -47,7 +47,6 @@ public class GameManager : MonoBehaviour
         get { return cursorLocked; }
         set
         {
-            Debug.Log("hello");
             cursorLocked = value;
             if (value)
             {
@@ -252,4 +251,6 @@ public class GameManager : MonoBehaviour
         return inventory;
     }
     #endregion
+    
+
 }
