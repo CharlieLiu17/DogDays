@@ -46,7 +46,7 @@ public class DialogueHandler : MonoBehaviour
     void Start()
     {
         GetCurrentDialogueFromXML();
-        DisplayCurrentDialogue();
+        //DisplayCurrentDialogue();
 
         // Test Code
         /*List<DialogueOption> options = new List<DialogueOption>();
