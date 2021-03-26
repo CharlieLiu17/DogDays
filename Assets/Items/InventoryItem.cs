@@ -25,7 +25,10 @@ public class InventoryItem
 
     public bool Equals(InventoryItem other)
     {
+        if (other == null)
+        {
+            return false;
+        }
         return (item.Equals(other.item) && amount.Equals(other.amount));
-    
     }
 }

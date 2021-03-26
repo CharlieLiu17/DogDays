@@ -52,6 +52,27 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private Text dialogueText;
 
+    [SerializeField]
+    private GameObject dialogueInitiationText; // Prompt for starting a dialogue interaction
+
+    private bool _dialogueInitiationTextShown = false;
+    public bool DialogueInitiationTextShown
+    {
+        get { return _dialogueInitiationTextShown; }
+        set
+        {
+            _dialogueInitiationTextShown = value;
+            if (dialogueInitiationText == null)
+            {
+                Debug.LogError("UIManager does not have a reference to DialogueInitiationText");
+            }
+            else
+            {
+                dialogueInitiationText.SetActive(_dialogueInitiationTextShown);
+            }
+        }
+    }
+
     private bool _itemPickupTextShown = false;
     public bool ItemPickupTextShown {
         get { return _itemPickupTextShown; }
@@ -159,11 +180,14 @@ public class UIManager : MonoBehaviour
             {
                 dialogueButtons[i].UpdateButton(false); // The button clears itself when no option is passed in to UpdateButton
             }
+            GameManager.Instance.CursorLocked = true;
             return;
+        } else
+        {
+            DialoguePanelShown = true;
+            dialogueText.text = FormatDialogueText(entry.displayText);
+            GameManager.Instance.CursorLocked = false;
         }
-
-        DialoguePanelShown = true;
-        dialogueText.text = entry.displayText;
 
         if (entry.options != null)
         {
@@ -185,5 +209,14 @@ public class UIManager : MonoBehaviour
                 dialogueButtons[i].UpdateButton(false); // The button clears itself when no option is passed in to UpdateButton
             }
         }
+    }
+
+    private string FormatDialogueText(string dialogue)
+    {
+        // Some special text replacement options
+        string stringToReturn = dialogue
+            .Replace("${currentDog}", GameManager.Instance.currentDog.ToString());
+
+        return stringToReturn;
     }
 }

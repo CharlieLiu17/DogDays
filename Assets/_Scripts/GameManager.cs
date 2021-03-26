@@ -58,6 +58,8 @@ public class GameManager : MonoBehaviour
         } 
     }
 
+    public Dogs currentDog;
+
     void Start()
     {
         if (inventory == null)
@@ -253,4 +255,9 @@ public class GameManager : MonoBehaviour
     #endregion
     
 
+}
+
+public enum Dogs { 
+    Kobe, 
+    Kali 
 }
