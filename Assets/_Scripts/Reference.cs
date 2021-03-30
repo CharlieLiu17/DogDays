@@ -69,7 +69,7 @@ public class Reference : MonoBehaviour
         {
             foreach (Quest quest in quests)
             {
-                if (quest != null)
+                if (quest != null && !questsByID.ContainsKey(quest.id)) // Don't add quest if we already have a matching ID
                 {
                     questsByID.Add(quest.id, quest);
                     questsByName.Add(quest.internalName, quest);

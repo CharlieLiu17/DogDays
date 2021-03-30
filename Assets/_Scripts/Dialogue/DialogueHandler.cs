@@ -46,7 +46,7 @@ public class DialogueHandler : MonoBehaviour
     void Start()
     {
         GetCurrentDialogueFromXML();
-        DisplayCurrentDialogue();
+        //DisplayCurrentDialogue();
 
         // Test Code
         /*List<DialogueOption> options = new List<DialogueOption>();
@@ -60,7 +60,7 @@ public class DialogueHandler : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.Return))
         {
             if (currentDialogue.options != null)
             {
