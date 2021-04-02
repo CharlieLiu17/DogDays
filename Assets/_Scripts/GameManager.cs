@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 // Singelton component for managing the game.
 // Any methods you want to be globally available should probably go here along with any data that changes during play.
@@ -23,6 +24,7 @@ public class GameManager : MonoBehaviour
         {
             _instance = this;
         }
+        DontDestroyOnLoad(gameObject);
     }
 
     private void OnDestroy()
@@ -36,6 +38,10 @@ public class GameManager : MonoBehaviour
     private List<Quest> activeQuests = null;
     [SerializeField]
     private List<InventoryItem> inventory = null;
+    [SerializeField]
+    private Animator transition;
+    [SerializeField]
+    private int transitionTime;
     // Allows us to check if the player has a quest of the given type
     private Dictionary<QuestTypes, bool> hasQuestType = null;
 
@@ -76,9 +82,9 @@ public class GameManager : MonoBehaviour
         };
 
         // Testing inventory system
-        AddItemToInventory(Reference.Instance.GetItemByID(1), 1);
-        AddItemToInventory(Reference.Instance.GetItemByID(0), 3);
-        AddItemToInventory(Reference.Instance.GetItemByID(2), 1);
+        //AddItemToInventory(Reference.Instance.GetItemByID(1), 1);
+        //AddItemToInventory(Reference.Instance.GetItemByID(0), 3);
+        //AddItemToInventory(Reference.Instance.GetItemByID(2), 1);
     }
 
     #region Quests
@@ -253,8 +259,21 @@ public class GameManager : MonoBehaviour
         return inventory;
     }
     #endregion
-    
 
+    public void LoadNextScene(int buildIndex, Transform[] nextTransforms)
+    {
+        StartCoroutine(LoadScene(buildIndex));
+    }
+
+    IEnumerator LoadScene(int buildIndex)
+    {
+        transition.SetTrigger("Transition");
+
+        yield return new WaitForSeconds(transitionTime);
+
+        SceneManager.LoadScene(buildIndex);
+    } 
+    
 }
 
 public enum Dogs { 

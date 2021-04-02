@@ -21,6 +21,7 @@ public class UIManager : MonoBehaviour
         {
             _instance = this;
         }
+        DontDestroyOnLoad(gameObject);
     }
 
     private void OnDestroy()
@@ -42,6 +43,10 @@ public class UIManager : MonoBehaviour
 
     [SerializeField]
     private GameObject itemPickupText;
+
+    [SerializeField]
+
+    private GameObject doorOpenText;
 
     [SerializeField]
     private Image dialoguePanel;
@@ -113,6 +118,23 @@ public class UIManager : MonoBehaviour
                 {
                     dialogueButtons[i].UpdateButton(false);
                 }
+            }
+        }
+    }
+
+    private bool _doorOpenTextShown = false;
+    public bool DoorOpenTextShown
+    {
+        get { return _doorOpenTextShown; }
+        set
+        {
+            _doorOpenTextShown = value;
+            if (doorOpenText == null)
+            {
+                Debug.LogError("Null reference to door opening text");
+            } else
+            {
+                doorOpenText.SetActive(_doorOpenTextShown);
             }
         }
     }

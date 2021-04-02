@@ -25,6 +25,7 @@ public class CharacterManager : MonoBehaviour
         {
             _instance = this;
         }
+        DontDestroyOnLoad(gameObject);
     }
 
     private void OnDestroy()
