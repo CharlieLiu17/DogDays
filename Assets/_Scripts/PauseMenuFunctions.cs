@@ -43,6 +43,7 @@ public class PauseMenuFunctions : MonoBehaviour
     public void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        GameManager.Instance.Restart();
         Resume();
     }
     public void Quit()

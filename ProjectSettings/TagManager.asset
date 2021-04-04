@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Grass
   - Wood
+  - DontDestroy
   layers:
   - Default
   - TransparentFX

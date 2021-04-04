@@ -142,6 +142,7 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         slots = inventorySlots.GetComponentsInChildren<InventorySlot>();
+        UpdateInventoryUI();
     }
     void Update()
     {

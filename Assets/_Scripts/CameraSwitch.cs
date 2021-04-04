@@ -15,6 +15,7 @@ public class CameraSwitch : MonoBehaviour
 
     private void Start()
     {
+        thirdPersonCamera = GameObject.Find("ThirdPersonCamera");
         freeLookScript = thirdPersonCamera.GetComponent<CinemachineFreeLook>();
         GameManager.Instance.CursorLocked = true;
     }

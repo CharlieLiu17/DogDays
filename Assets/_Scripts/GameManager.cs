@@ -7,6 +7,21 @@ using UnityEngine.SceneManagement;
 // Any methods you want to be globally available should probably go here along with any data that changes during play.
 public class GameManager : MonoBehaviour
 {
+    // This is exposed to the editor for debugging, but we shouldn't add quests in this way while in Play Mode
+    [SerializeField]
+    private List<Quest> activeQuests = null;
+    [SerializeField]
+    private List<InventoryItem> inventory = null;
+    [SerializeField]
+    private Animator transition;
+    [SerializeField]
+    private int transitionTime;
+    [SerializeField]
+    private GameObject[] dontDestroy;
+    
+
+    [SerializeField]
+    private Transform[] dogSpawnTransforms = new Transform[2];
     // This code allows us to access GameManager's methods and data by using GameManager.Instance.<method/data name> from anywhere
     #region Singleton Code
     private static GameManager _instance;
@@ -15,6 +30,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+
         if (_instance != null && _instance != this)
         {
             Debug.LogWarning("Attempted to Instantiate multiple GameManagers in one scene!");
@@ -25,6 +41,14 @@ public class GameManager : MonoBehaviour
             _instance = this;
         }
         DontDestroyOnLoad(gameObject);
+        foreach (GameObject anObject in dontDestroy)
+        {
+            if (GameObject.Find(anObject.name) == null)
+            {
+                anObject.SetActive(true);
+            }
+        }
+
     }
 
     private void OnDestroy()
@@ -33,15 +57,7 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
-    // This is exposed to the editor for debugging, but we shouldn't add quests in this way while in Play Mode
-    [SerializeField]
-    private List<Quest> activeQuests = null;
-    [SerializeField]
-    private List<InventoryItem> inventory = null;
-    [SerializeField]
-    private Animator transition;
-    [SerializeField]
-    private int transitionTime;
+  
     // Allows us to check if the player has a quest of the given type
     private Dictionary<QuestTypes, bool> hasQuestType = null;
 
@@ -80,6 +96,7 @@ public class GameManager : MonoBehaviour
             { QuestTypes.OBTAIN, false },
             { QuestTypes.SPEAK, false }
         };
+        
 
         // Testing inventory system
         //AddItemToInventory(Reference.Instance.GetItemByID(1), 1);
@@ -162,7 +179,7 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
-    #region Inventory
+        #region Inventory
     public void AddItemToInventory(Item item, int amount)
     {
         if (inventory.Find(invItem => invItem.item == item) != null) // Handle multiple of the same item
@@ -260,22 +277,60 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
+    #region SceneTransition
+
     public void LoadNextScene(int buildIndex, Transform[] nextTransforms)
     {
-        StartCoroutine(LoadScene(buildIndex));
+        dogSpawnTransforms[0].position = nextTransforms[0].position;
+        dogSpawnTransforms[0].rotation = nextTransforms[0].rotation;
+        dogSpawnTransforms[1].position = nextTransforms[1].position;
+        dogSpawnTransforms[1].rotation = nextTransforms[1].rotation;
+        StartCoroutine(LoadScene(buildIndex, nextTransforms));
     }
 
-    IEnumerator LoadScene(int buildIndex)
+    IEnumerator LoadScene(int buildIndex, Transform[] nextTransforms)
     {
-        transition.SetTrigger("Transition");
+        transition.SetBool("Transition", true);
 
         yield return new WaitForSeconds(transitionTime);
 
         SceneManager.LoadScene(buildIndex);
-    } 
-    
-}
 
+
+        GameObject kobe = dontDestroy[0];
+        GameObject kali = dontDestroy[1];
+
+        kobe.transform.position = dogSpawnTransforms[0].position; //index 0 always kobe
+        kali.transform.rotation = dogSpawnTransforms[0].rotation;
+        Debug.Log(nextTransforms[0].position);
+        kali.transform.position = dogSpawnTransforms[1].position; //index 1 always kali
+        kali.transform.rotation = dogSpawnTransforms[1].rotation;
+        
+        transition.SetBool("Transition", false);
+    }
+
+    public void Restart()
+    {
+        GameObject kobe = dontDestroy[0];
+        GameObject kali = dontDestroy[1];
+        Debug.Log(dogSpawnTransforms[0].position);
+        kobe.transform.position = dogSpawnTransforms[0].position;
+        kobe.transform.rotation = dogSpawnTransforms[0].rotation;
+        kali.transform.position = dogSpawnTransforms[1].position;
+        kali.transform.rotation = dogSpawnTransforms[1].rotation;
+    }
+    public GameObject getKobe()
+    {
+        return dontDestroy[0];
+    }
+
+    public GameObject getKali()
+    {
+        return dontDestroy[1];
+    }
+    #endregion
+
+}
 public enum Dogs { 
     Kobe, 
     Kali 
