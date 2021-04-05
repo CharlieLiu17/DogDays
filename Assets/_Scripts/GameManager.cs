@@ -281,6 +281,7 @@ public class GameManager : MonoBehaviour
 
     public void LoadNextScene(int buildIndex, Transform[] nextTransforms)
     {
+        Debug.Log(nextTransforms[0].position);
         dogSpawnTransforms[0].position = nextTransforms[0].position;
         dogSpawnTransforms[0].rotation = nextTransforms[0].rotation;
         dogSpawnTransforms[1].position = nextTransforms[1].position;
@@ -302,7 +303,6 @@ public class GameManager : MonoBehaviour
 
         kobe.transform.position = dogSpawnTransforms[0].position; //index 0 always kobe
         kali.transform.rotation = dogSpawnTransforms[0].rotation;
-        Debug.Log(nextTransforms[0].position);
         kali.transform.position = dogSpawnTransforms[1].position; //index 1 always kali
         kali.transform.rotation = dogSpawnTransforms[1].rotation;
         
