@@ -40,6 +40,42 @@ public class Reference : MonoBehaviour
     [SerializeField]
     private Item[] items;
 
+    #region Controls
+    public class Controls
+    {
+        public static KeyCode Up;
+        public static KeyCode Right;
+        public static KeyCode Down;
+        public static KeyCode Left;
+        public static KeyCode Sprint;
+        public static KeyCode Interract;
+        public static KeyCode OpenMenu;
+        public static KeyCode OpenInventory;
+    }
+
+    public void GetControlsFromPlayerPrefs()
+    {
+        Controls.Up = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("up", "W"));
+        Controls.Right = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("right", "D"));
+        Controls.Down = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("down", "S"));
+        Controls.Left = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("left", "S"));
+        Controls.Sprint = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("sprint", "LeftShift"));
+        Controls.Interract = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("interract", "E"));
+        Controls.OpenMenu = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("openMenu", "Escape"));
+        Controls.OpenInventory = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("openInventory", "Tab"));
+    }
+    #endregion
+
+    private void Start()
+    {
+        GetControlsFromPlayerPrefs();
+    }
+
+    private void Update()
+    {
+
+    }
+
     #region Dictionaries
     // Used for getting items, quests, and dialogue entries by their name or ID
     private Dictionary<int, Item> itemsByID = null;
