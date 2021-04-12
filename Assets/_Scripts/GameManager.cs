@@ -187,7 +187,7 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
-        #region Inventory
+    #region Inventory
     public void AddItemToInventory(Item item, int amount)
     {
         if (inventory.Find(invItem => invItem.item == item) != null) // Handle multiple of the same item
