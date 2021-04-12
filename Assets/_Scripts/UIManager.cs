@@ -184,6 +184,10 @@ public class UIManager : MonoBehaviour
             {
                 inventoryMenu.SetActive(false);
             }
+            if (questUIPanel.activeSelf)
+            {
+                questUIPanel.SetActive(false);
+            }
         }
     }
 
@@ -232,20 +236,26 @@ public class UIManager : MonoBehaviour
             Debug.LogError("Player is carrying " + (names.Length - 4) + " more quests than their inventory capacity!");
             Debug.Log("Quest Length: " + names.Length);
         }
+        if (names.Length == 0)
+        {
+            
+        }
         for (int i = 0; i < names.Length; i++)
         {
             string displayName = GameManager.Instance.getActiveQuests()[i].displayName;
-            Debug.Log(displayName);
             string description = GameManager.Instance.getActiveQuests()[i].description;
             if (displayName == null)
             {
-                names[i].text = "";
+                names[i].text = " ";
             }
             else
             {
                 names[i].text = displayName;
             }
             if (description == null)
+            {
+                descriptions[i].text = " ";
+            } else
             {
                 descriptions[i].text = description;
             }
