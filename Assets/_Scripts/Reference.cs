@@ -53,6 +53,24 @@ public class Reference : MonoBehaviour
         public static KeyCode OpenInventory;
     }
 
+    public class VisualSettings
+    {
+        public static int QualityLevel;
+        public static bool IsFullscreen;
+    }
+
+    public void GetGraphicsSettingsFromPlayerPrefs()
+    {
+        VisualSettings.QualityLevel = PlayerPrefs.GetInt("quality", 1);
+        if (PlayerPrefs.GetInt("isFullscreen", 1) == 1)
+        {
+            VisualSettings.IsFullscreen = true;
+        } else
+        {
+            VisualSettings.IsFullscreen = false;
+        }
+    }
+
     public void GetControlsFromPlayerPrefs()
     {
         Controls.Up = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("up", "W"));
@@ -69,11 +87,6 @@ public class Reference : MonoBehaviour
     private void Start()
     {
         GetControlsFromPlayerPrefs();
-    }
-
-    private void Update()
-    {
-
     }
 
     #region Dictionaries
