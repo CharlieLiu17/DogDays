@@ -10,6 +10,10 @@ public class InventorySlot : MonoBehaviour
 
     [SerializeField]
     private Sprite emptySprite; // Sprite to show when the slot is empty
+    [SerializeField]
+    private Sprite emptyRemoveIcon;
+    [SerializeField]
+    private Sprite filledRemoveIcon;
     private InventoryItem inventoryItem;
 
     public Button removeButton;
@@ -25,6 +29,7 @@ public class InventorySlot : MonoBehaviour
         }
         this.inventoryItem = inventoryItem;
         removeButton.interactable = true;
+        removeButton.gameObject.GetComponent<Image>().sprite = filledRemoveIcon;
         icon.sprite = inventoryItem.item.sprite;
     }
 
@@ -40,6 +45,7 @@ public class InventorySlot : MonoBehaviour
         inventoryItem = null;
         icon.sprite = null;
         icon.sprite = emptySprite;
+        removeButton.gameObject.GetComponent<Image>().sprite = emptyRemoveIcon;
         removeButton.interactable = false;
     }
 }

@@ -18,6 +18,7 @@ public class NPCDialogue : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            Debug.Log("it's a me");
             playerIsWithinRange = true;
             UIManager.Instance.DialogueInitiationTextShown = true;
         }

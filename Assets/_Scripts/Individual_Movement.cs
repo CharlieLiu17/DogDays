@@ -26,6 +26,10 @@ public class Individual_Movement : MonoBehaviour
         anim = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
         currentTransformIndex = 0;
+        currentLocation = myLocations[currentTransformIndex];
+        agent.SetDestination(currentLocation.position);
+        moveSwitch = true;
+        moving = true;
         //currentLocation = NPC_Manager.Instance.locations[currentTransformIndex
         //Debug.Log(currentTransformIndex);
     }

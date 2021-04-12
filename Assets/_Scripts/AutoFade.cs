@@ -28,9 +28,9 @@ public class AutoFade : MonoBehaviour
 
     private void Awake()
     {
-        DontDestroyOnLoad(this);
-        m_Instance = this;
-        m_Material = new Material("Shader \"Plane/No zTest\" { SubShader { Pass { Blend SrcAlpha OneMinusSrcAlpha ZWrite Off Cull Off Fog { Mode Off } BindChannels { Bind \"Color\",color } } } }");
+        //DontDestroyOnLoad(this);
+        //m_Instance = this;
+        //m_Material = new Material("Shader \"Plane/No zTest\" { SubShader { Pass { Blend SrcAlpha OneMinusSrcAlpha ZWrite Off Cull Off Fog { Mode Off } BindChannels { Bind \"Color\",color } } } }");
     }
 
     private void DrawQuad(Color aColor, float aAlpha)

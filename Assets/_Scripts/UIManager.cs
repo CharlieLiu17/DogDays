@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class UIManager : MonoBehaviour
 {
@@ -33,6 +34,19 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private GameObject inventorySlots;
 
+    [SerializeField]
+    private GameObject questNames;
+
+    private TextMeshProUGUI[] names;
+
+    [SerializeField]
+    private GameObject questDescriptions;
+
+    private TextMeshProUGUI[] descriptions;
+
+    [SerializeField]
+    private GameObject questUIPanel;
+
     private InventorySlot[] slots; // This can't be serialized without breaking things
 
     [SerializeField]
@@ -55,7 +69,7 @@ public class UIManager : MonoBehaviour
     private List<DialogueButtonHandler> dialogueButtons;
 
     [SerializeField]
-    private Text dialogueText;
+    private TextMeshProUGUI dialogueText;
 
     [SerializeField]
     private GameObject dialogueInitiationText; // Prompt for starting a dialogue interaction
@@ -109,7 +123,7 @@ public class UIManager : MonoBehaviour
 
             if (dialogueText == null)
             {
-                dialogueText = GameObject.Find("Dialogue Text").GetComponent<Text>();
+                dialogueText = GameObject.Find("Dialogue Text").GetComponent<TextMeshProUGUI>();
             }
             dialogueText.enabled = _dialoguePanelShown;
             if (value == false)
@@ -142,8 +156,12 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         slots = inventorySlots.GetComponentsInChildren<InventorySlot>();
+        names = questNames.GetComponentsInChildren<TextMeshProUGUI>();
+        descriptions = questNames.GetComponentsInChildren<TextMeshProUGUI>();
         UpdateInventoryUI();
+        UpdateQuestsUI();
     }
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Tab) && !pauseMenu.activeSelf) // Toggle inventory menu on Tab
@@ -152,7 +170,12 @@ public class UIManager : MonoBehaviour
             {
                 inventoryMenu = GameObject.Find("Inventory Menu");
             }
+            if (questUIPanel == null)
+            {
+                questUIPanel = GameObject.Find("Quest UI");
+            }
             inventoryMenu.SetActive(!inventoryMenu.activeSelf);
+            questUIPanel.SetActive(!questUIPanel.activeSelf);
             GameManager.Instance.CursorLocked = !inventoryMenu.activeSelf; // Cursor locked if inventory not visible, unlocked if visible
         }
         if (Input.GetKeyDown(KeyCode.Escape)) // Close inventory menu on Esc
@@ -189,6 +212,42 @@ public class UIManager : MonoBehaviour
             if (slots[i] != null)
             {
                 slots[i].ClearSlotIterative();
+            }
+        }
+    }
+
+    //Fill Quest Log with current active quests in GameManager.
+    public void UpdateQuestsUI()
+    {
+        if (names == null)
+        {
+            names = questNames.GetComponentsInChildren<TextMeshProUGUI>();
+        }
+        if (descriptions == null)
+        {
+            descriptions = questDescriptions.GetComponentsInChildren<TextMeshProUGUI>();
+        }
+        if (names.Length > 4) // This shouldn't ever happen, but this is here in case it does
+        {
+            Debug.LogError("Player is carrying " + (names.Length - 4) + " more quests than their inventory capacity!");
+            Debug.Log("Quest Length: " + names.Length);
+        }
+        for (int i = 0; i < names.Length; i++)
+        {
+            string displayName = GameManager.Instance.getActiveQuests()[i].displayName;
+            Debug.Log(displayName);
+            string description = GameManager.Instance.getActiveQuests()[i].description;
+            if (displayName == null)
+            {
+                names[i].text = "";
+            }
+            else
+            {
+                names[i].text = displayName;
+            }
+            if (description == null)
+            {
+                descriptions[i].text = description;
             }
         }
     }

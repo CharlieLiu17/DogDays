@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<DialogueEntry>
+  <DisplayText> It's for human palates only. That means it shouldn't be in or near your mouth. Are we clear?</DisplayText>
+  <Options>
+    <Option>
+      <SelectOnEnterPressed>true</SelectOnEnterPressed>
+      <DisplayText>YES</DisplayText>
+      <NextDialogue></NextDialogue>
+      <Events>
+        <Event>
+          <Type>GiveQuest</Type>
+          <QuestID>0</QuestID>
+        </Event>
+      </Events>
+    </Option>
+  </Options>
+</DialogueEntry>

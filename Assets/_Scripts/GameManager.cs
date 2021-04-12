@@ -110,17 +110,20 @@ public class GameManager : MonoBehaviour
         if (!activeQuests.Contains(quest)) // Don't allow duplicates
         {
             activeQuests.Add(quest);
+            UIManager.Instance.UpdateQuestsUI();
         }
     }
     public void RemoveQuestByName(string name)
     {
         activeQuests.Remove(activeQuests.Find(x => x.internalName == name));
         UpdateHasQuestType();
+        UIManager.Instance.UpdateQuestsUI();
     }
     public void RemoveQuestByID(int id)
     {
         activeQuests.Remove(activeQuests.Find(x => x.id == id));
         UpdateHasQuestType();
+        UIManager.Instance.UpdateQuestsUI();
     }
     private void UpdateHasQuestType()
     {
@@ -176,6 +179,11 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
+    }
+
+    public List<Quest> getActiveQuests()
+    {
+        return activeQuests;
     }
     #endregion
 

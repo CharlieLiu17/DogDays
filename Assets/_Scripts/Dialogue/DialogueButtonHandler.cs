@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class DialogueButtonHandler : MonoBehaviour
 {
     [SerializeField]
     private Button button;
     [SerializeField]
-    private Text text;
+    private TextMeshProUGUI text;
 
     public DialogueOption option;
     
