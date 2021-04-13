@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<DialogueEntry>
+  <DisplayText>Cod: I was kicking around with it out in the yard, but then I kicked it somewhere, and I kinda forgot about it.</DisplayText>
+    <Options>
+      <Option>
+        <SelectOnEnterPressed>true</SelectOnEnterPressed>
+        <DisplayText>Next</DisplayText>
+        <NextDialogue>SoccerBallDialogue3</NextDialogue>
+      </Option>
+    </Options>
+</DialogueEntry>

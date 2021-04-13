@@ -30,6 +30,7 @@ public class DialogueHandler : MonoBehaviour
                 hm.inDialogue = false;
                 vcam.enabled = false;
                 GameManager.Instance.freeLookScript.enabled = true;
+                GameManager.Instance.CursorLocked = true;
             }
             else
             {

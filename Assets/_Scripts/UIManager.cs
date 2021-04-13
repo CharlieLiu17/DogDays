@@ -240,7 +240,7 @@ public class UIManager : MonoBehaviour
         {
             
         }
-        for (int i = 0; i < names.Length; i++)
+        for (int i = 0; i < GameManager.Instance.getActiveQuests().Count; i++)
         {
             string displayName = GameManager.Instance.getActiveQuests()[i].displayName;
             string description = GameManager.Instance.getActiveQuests()[i].description;
