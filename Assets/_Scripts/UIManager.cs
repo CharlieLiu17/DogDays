@@ -74,6 +74,9 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private GameObject dialogueInitiationText; // Prompt for starting a dialogue interaction
 
+    private DialogueEntry _currentlyDisplayedDialogue;
+    public DialogueEntry CurrentlyDisplayedDialogue { get { return _currentlyDisplayedDialogue; } }
+
     private bool _dialogueInitiationTextShown = false;
     public bool DialogueInitiationTextShown
     {
@@ -277,6 +280,7 @@ public class UIManager : MonoBehaviour
             return;
         } else
         {
+            _currentlyDisplayedDialogue = entry;
             DialoguePanelShown = true;
             dialogueText.text = FormatDialogueText(entry.displayText);
             GameManager.Instance.CursorLocked = false;

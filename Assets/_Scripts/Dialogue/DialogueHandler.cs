@@ -72,7 +72,7 @@ public class DialogueHandler : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Return))
+        if (Input.GetKeyDown(KeyCode.Return) && UIManager.Instance.CurrentlyDisplayedDialogue == currentDialogue)
         {
             if (currentDialogue.options != null)
             {
