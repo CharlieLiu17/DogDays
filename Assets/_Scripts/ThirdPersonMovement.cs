@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ThirdPersonMovement : MonoBehaviour
 {
     public CharacterController controller;
-    public Transform cam;
+    private Transform cam;
     public Animator anim;
     public Rigidbody rb;
 
@@ -22,9 +23,15 @@ public class ThirdPersonMovement : MonoBehaviour
     public Vector3 moveDirection = new Vector3(0f, 0f, 0f);
     float turnSmoothVelocity;
     float finalSpeed = 1;
-    
+    private int buildIndex;
 
 
+    private void Start()
+    {
+        cam = GameObject.Find("Main Camera").transform;
+        buildIndex = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
     private void OnEnable()
     {
         controller.center = new Vector3(controller.center.x, colliderY, controller.center.z);
@@ -120,5 +127,9 @@ public class ThirdPersonMovement : MonoBehaviour
         anim.SetInteger("Movement Int", 0); //change this to ai script later
         controller.center = new Vector3(controller.center.x, colliderY, controller.center.z);
 
+    }
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        cam = GameObject.Find("Main Camera").transform;
     }
 }

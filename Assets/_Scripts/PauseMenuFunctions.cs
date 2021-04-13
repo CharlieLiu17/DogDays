@@ -31,7 +31,6 @@ public class PauseMenuFunctions : MonoBehaviour
         Time.timeScale = 1f;
         GameIsPaused = !GameIsPaused;
         GameManager.Instance.CursorLocked = true;
-        Debug.Log("what's up");
     }
     public void Pause()
     {
@@ -43,6 +42,7 @@ public class PauseMenuFunctions : MonoBehaviour
     public void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        GameManager.Instance.Restart();
         Resume();
     }
     public void Quit()

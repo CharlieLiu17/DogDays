@@ -1,11 +1,29 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using Cinemachine;
 
 // Singelton component for managing the game.
 // Any methods you want to be globally available should probably go here along with any data that changes during play.
 public class GameManager : MonoBehaviour
 {
+    // This is exposed to the editor for debugging, but we shouldn't add quests in this way while in Play Mode
+    [SerializeField]
+    private List<Quest> activeQuests = null;
+    [SerializeField]
+    private List<InventoryItem> inventory = null;
+    [SerializeField]
+    private Animator transition;
+    [SerializeField]
+    private int transitionTime;
+    [SerializeField]
+    private GameObject[] dontDestroy; //THE REFERENCES TO THE DOGS
+    
+    
+    public CinemachineFreeLook freeLookScript;
+    [SerializeField]
+    private Transform[] dogSpawnTransforms = new Transform[2];
     // This code allows us to access GameManager's methods and data by using GameManager.Instance.<method/data name> from anywhere
     #region Singleton Code
     private static GameManager _instance;
@@ -14,6 +32,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+
         if (_instance != null && _instance != this)
         {
             Debug.LogWarning("Attempted to Instantiate multiple GameManagers in one scene!");
@@ -23,6 +42,15 @@ public class GameManager : MonoBehaviour
         {
             _instance = this;
         }
+        DontDestroyOnLoad(gameObject);
+        foreach (GameObject anObject in dontDestroy)
+        {
+            if (GameObject.Find(anObject.name) == null)
+            {
+                anObject.SetActive(true);
+            }
+        }
+
     }
 
     private void OnDestroy()
@@ -31,11 +59,7 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
-    // This is exposed to the editor for debugging, but we shouldn't add quests in this way while in Play Mode
-    [SerializeField]
-    private List<Quest> activeQuests = null;
-    [SerializeField]
-    private List<InventoryItem> inventory = null;
+  
     // Allows us to check if the player has a quest of the given type
     private Dictionary<QuestTypes, bool> hasQuestType = null;
 
@@ -74,11 +98,12 @@ public class GameManager : MonoBehaviour
             { QuestTypes.OBTAIN, false },
             { QuestTypes.SPEAK, false }
         };
+        
 
         // Testing inventory system
-        AddItemToInventory(Reference.Instance.GetItemByID(1), 1);
-        AddItemToInventory(Reference.Instance.GetItemByID(0), 3);
-        AddItemToInventory(Reference.Instance.GetItemByID(2), 1);
+        //AddItemToInventory(Reference.Instance.GetItemByID(1), 1);
+        //AddItemToInventory(Reference.Instance.GetItemByID(0), 3);
+        //AddItemToInventory(Reference.Instance.GetItemByID(2), 1);
     }
 
     #region Quests
@@ -87,17 +112,20 @@ public class GameManager : MonoBehaviour
         if (!activeQuests.Contains(quest)) // Don't allow duplicates
         {
             activeQuests.Add(quest);
+            UIManager.Instance.UpdateQuestsUI();
         }
     }
     public void RemoveQuestByName(string name)
     {
         activeQuests.Remove(activeQuests.Find(x => x.internalName == name));
         UpdateHasQuestType();
+        UIManager.Instance.UpdateQuestsUI();
     }
     public void RemoveQuestByID(int id)
     {
         activeQuests.Remove(activeQuests.Find(x => x.id == id));
         UpdateHasQuestType();
+        UIManager.Instance.UpdateQuestsUI();
     }
     private void UpdateHasQuestType()
     {
@@ -153,6 +181,11 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
+    }
+
+    public List<Quest> getActiveQuests()
+    {
+        return activeQuests;
     }
     #endregion
 
@@ -253,10 +286,74 @@ public class GameManager : MonoBehaviour
         return inventory;
     }
     #endregion
-    
+
+    #region SceneTransition
+
+    public void LoadNextScene(int buildIndex, Transform[] nextTransforms)
+    {
+        Debug.Log(nextTransforms[0].position);
+        dogSpawnTransforms[0].position = nextTransforms[0].position;
+        dogSpawnTransforms[0].rotation = nextTransforms[0].rotation;
+        dogSpawnTransforms[1].position = nextTransforms[1].position;
+        dogSpawnTransforms[1].rotation = nextTransforms[1].rotation;
+        StartCoroutine(LoadScene(buildIndex, nextTransforms));
+    }
+
+    IEnumerator LoadScene(int buildIndex, Transform[] nextTransforms)
+    {
+        transition.SetBool("Transition", true);
+
+        yield return new WaitForSeconds(transitionTime);
+
+        SceneManager.LoadScene(buildIndex);
+
+
+        GameObject kobe = dontDestroy[0];
+        GameObject kali = dontDestroy[1];
+
+        kobe.transform.position = dogSpawnTransforms[0].position; //index 0 always kobe
+        kali.transform.rotation = dogSpawnTransforms[0].rotation;
+        kali.transform.position = dogSpawnTransforms[1].position; //index 1 always kali
+        kali.transform.rotation = dogSpawnTransforms[1].rotation;
+        
+        transition.SetBool("Transition", false);
+    }
+
+    public void Restart()
+    {
+        GameObject kobe = dontDestroy[0];
+        GameObject kali = dontDestroy[1];
+        Debug.Log(dogSpawnTransforms[0].position);
+        kobe.transform.position = dogSpawnTransforms[0].position;
+        kobe.transform.rotation = dogSpawnTransforms[0].rotation;
+        kali.transform.position = dogSpawnTransforms[1].position;
+        kali.transform.rotation = dogSpawnTransforms[1].rotation;
+    }
+    public GameObject getKobe()
+    {
+        return dontDestroy[0];
+    }
+
+    public GameObject getKali()
+    {
+        return dontDestroy[1];
+    }
+    public GameObject getCurrentDog()
+    {
+        switch(currentDog)
+        {
+            case Dogs.Kobe:
+                return dontDestroy[0];
+            case Dogs.Kali:
+                return dontDestroy[1];
+            default:
+                return null;
+
+        }
+    }
+    #endregion
 
 }
-
 public enum Dogs { 
     Kobe, 
     Kali 

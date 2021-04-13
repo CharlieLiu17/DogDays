@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Restart : MonoBehaviour
 {
-    bool enabled = false;
+    bool restartEnabled = false;
     // Update is called once per frame
     void Update()
     {

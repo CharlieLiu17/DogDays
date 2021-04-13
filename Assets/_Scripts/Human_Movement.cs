@@ -9,6 +9,7 @@ public class Human_Movement : MonoBehaviour
     Animator anim;
     NavMeshAgent agent;
     public float idleTime;
+    public bool inDialogue; 
 
     
     private int currentTransformIndex;
@@ -34,35 +35,43 @@ public class Human_Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Giving movement directions
-        if (!agent.hasPath) //only counts the timer when not moving
+        if (!inDialogue)
         {
-            timer += Time.deltaTime;
-        }
-        if (timer >= idleTime)
-        {
-            NPC_Manager.Instance.locations[currentTransformIndex].isOccupied = false;
-            //loop until it reaches a not occupied spot
-            if (currentTransformIndex == NPC_Manager.Instance.locations.Length - 1)
+            //Giving movement directions
+            if (!agent.hasPath) //only counts the timer when not moving
             {
-                currentTransformIndex = -1; // -1 + 1 reset back to 0
+                timer += Time.deltaTime;
             }
-            while (NPC_Manager.Instance.locations[currentTransformIndex + 1].isOccupied == true)
+            if (timer >= idleTime)
             {
+                NPC_Manager.Instance.locations[currentTransformIndex].isOccupied = false;
+                //loop until it reaches a not occupied spot
                 if (currentTransformIndex == NPC_Manager.Instance.locations.Length - 1)
                 {
                     currentTransformIndex = -1; // -1 + 1 reset back to 0
                 }
-                currentTransformIndex++;
+                while (NPC_Manager.Instance.locations[currentTransformIndex + 1].isOccupied == true)
+                {
+                    if (currentTransformIndex == NPC_Manager.Instance.locations.Length - 1)
+                    {
+                        currentTransformIndex = -1; // -1 + 1 reset back to 0
+                    }
+                    currentTransformIndex++;
+                }
+                currentLocation = NPC_Manager.Instance.locations[++currentTransformIndex];
+                agent.SetDestination(currentLocation.transform.position);
+                currentLocation.isOccupied = true;
+                timer = 0; //reset
+                moveSwitch = true;
+                moving = true;
             }
-            currentLocation = NPC_Manager.Instance.locations[++currentTransformIndex];
-            agent.SetDestination(currentLocation.transform.position);
-            currentLocation.isOccupied = true;
-            timer = 0; //reset
-            moveSwitch = true; 
+        } else
+        {
+            agent.SetDestination(gameObject.transform.position);
+            gameObject.transform.LookAt(GameObject.Find(GameManager.Instance.currentDog.ToString()).transform);
+            moveSwitch = true;
             moving = true;
         }
-
         if (!agent.pathPending)
         {
             if (agent.remainingDistance <= agent.stoppingDistance)
