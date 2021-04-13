@@ -72,6 +72,7 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
+    - _Rotation: 3.2107394
     - _Rotation: 1.3907121
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1

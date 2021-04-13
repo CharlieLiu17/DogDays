@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<DialogueEntry>
+  <DisplayText> Cod: I would do anything to just kick that ball around again...</DisplayText>
+  <Options>
+    <Option>
+      <SelectOnEnterPressed>true</SelectOnEnterPressed>
+      <DisplayText>YES</DisplayText>
+      <NextDialogue></NextDialogue>
+      <Events>
+        <Event>
+          <Type>GiveQuest</Type>
+          <QuestID>1</QuestID>
+        </Event>
+        <Event>
+          <Type>EndDialogue</Type>
+        </Event>
+      </Events>
+    </Option>
+  </Options>
+</DialogueEntry>

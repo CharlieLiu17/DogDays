@@ -74,6 +74,9 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private GameObject dialogueInitiationText; // Prompt for starting a dialogue interaction
 
+    private DialogueEntry _currentlyDisplayedDialogue;
+    public DialogueEntry CurrentlyDisplayedDialogue { get { return _currentlyDisplayedDialogue; } }
+
     private bool _dialogueInitiationTextShown = false;
     public bool DialogueInitiationTextShown
     {
@@ -240,7 +243,7 @@ public class UIManager : MonoBehaviour
         {
             
         }
-        for (int i = 0; i < names.Length; i++)
+        for (int i = 0; i < GameManager.Instance.getActiveQuests().Count; i++)
         {
             string displayName = GameManager.Instance.getActiveQuests()[i].displayName;
             string description = GameManager.Instance.getActiveQuests()[i].description;
@@ -277,6 +280,7 @@ public class UIManager : MonoBehaviour
             return;
         } else
         {
+            _currentlyDisplayedDialogue = entry;
             DialoguePanelShown = true;
             dialogueText.text = FormatDialogueText(entry.displayText);
             GameManager.Instance.CursorLocked = false;

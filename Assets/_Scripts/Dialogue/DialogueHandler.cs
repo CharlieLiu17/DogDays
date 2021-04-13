@@ -30,6 +30,7 @@ public class DialogueHandler : MonoBehaviour
                 hm.inDialogue = false;
                 vcam.enabled = false;
                 GameManager.Instance.freeLookScript.enabled = true;
+                GameManager.Instance.CursorLocked = true;
             }
             else
             {
@@ -71,7 +72,7 @@ public class DialogueHandler : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Return))
+        if (Input.GetKeyDown(KeyCode.Return) && UIManager.Instance.CurrentlyDisplayedDialogue == currentDialogue)
         {
             if (currentDialogue.options != null)
             {
