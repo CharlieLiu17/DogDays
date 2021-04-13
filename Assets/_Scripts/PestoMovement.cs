@@ -30,7 +30,7 @@ public class PestoMovement : MonoBehaviour
     void Update()
     {
         animator.SetBool("isMoving", true);
-        Vector3 tempVect = new Vector3(0, 0, 1);
+        Vector3 tempVect = new Vector3(1, 0, 0);
         // apply our speed
         tempVect = tempVect.normalized * speed * Time.deltaTime;
         // modify current position by tempVect
