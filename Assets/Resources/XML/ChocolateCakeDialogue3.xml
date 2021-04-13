@@ -11,6 +11,9 @@
           <Type>GiveQuest</Type>
           <QuestID>0</QuestID>
         </Event>
+        <Event>
+          <Type>EndDialogue</Type>
+        </Event>
       </Events>
     </Option>
   </Options>

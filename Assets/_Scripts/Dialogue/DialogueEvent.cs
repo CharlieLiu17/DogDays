@@ -23,6 +23,7 @@ public class DialogueEvent
             {
                 Debug.LogError("DialogueEvent of type GiveQuest did not have a QuestID specified!");
             }
+            Debug.Log("wowowow");
             questEventID = int.Parse(eventNode.SelectSingleNode("QuestID").InnerText);
         }
     }
@@ -60,6 +61,8 @@ public class DialogueEvent
                 Debug.Log("No event type defined!");
                 break;
         }
+        Debug.Log("hello2");
+        GameManager.Instance.getCurrentDog().GetComponent<ThirdPersonMovement>().enabled = true;
     }
 }
 

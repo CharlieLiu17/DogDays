@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Cinemachine;
 
 // Singelton component for managing the game.
 // Any methods you want to be globally available should probably go here along with any data that changes during play.
@@ -17,9 +18,10 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private int transitionTime;
     [SerializeField]
-    private GameObject[] dontDestroy;
+    private GameObject[] dontDestroy; //THE REFERENCES TO THE DOGS
     
-
+    
+    public CinemachineFreeLook freeLookScript;
     [SerializeField]
     private Transform[] dogSpawnTransforms = new Transform[2];
     // This code allows us to access GameManager's methods and data by using GameManager.Instance.<method/data name> from anywhere
@@ -335,6 +337,19 @@ public class GameManager : MonoBehaviour
     public GameObject getKali()
     {
         return dontDestroy[1];
+    }
+    public GameObject getCurrentDog()
+    {
+        switch(currentDog)
+        {
+            case Dogs.Kobe:
+                return dontDestroy[0];
+            case Dogs.Kali:
+                return dontDestroy[1];
+            default:
+                return null;
+
+        }
     }
     #endregion
 

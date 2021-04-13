@@ -53,13 +53,13 @@ public class DialogueOption
         {
             return;
         }
-
         dialogueHandler.DialogueName = nextDialogue;
 
         if (events != null)
         {
             foreach (DialogueEvent e in events)
             {
+                Debug.Log(e.type);
                 e.Trigger();
             }
         }

@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
+using Cinemachine;
 
 [RequireComponent(typeof(DialogueHandler))]
 [RequireComponent(typeof(Collider))]
@@ -8,17 +10,19 @@ public class NPCDialogue : MonoBehaviour
 {
     private bool playerIsWithinRange;
     private DialogueHandler dialogueHandler;
+    private Human_Movement hm;
+    public CinemachineVirtualCamera vcam;
 
     private void Start()
     {
         dialogueHandler = GetComponent<DialogueHandler>();
+        hm = GetComponent<Human_Movement>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("it's a me");
             playerIsWithinRange = true;
             UIManager.Instance.DialogueInitiationTextShown = true;
         }
@@ -38,6 +42,9 @@ public class NPCDialogue : MonoBehaviour
         {
             dialogueHandler.DisplayCurrentDialogue();
             UIManager.Instance.DialogueInitiationTextShown = false;
+            hm.inDialogue = true;
+            GameManager.Instance.freeLookScript.enabled = false;
+            vcam.enabled = true;
         }
     }
 }

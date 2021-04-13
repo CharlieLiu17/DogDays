@@ -157,7 +157,7 @@ public class UIManager : MonoBehaviour
     {
         slots = inventorySlots.GetComponentsInChildren<InventorySlot>();
         names = questNames.GetComponentsInChildren<TextMeshProUGUI>();
-        descriptions = questNames.GetComponentsInChildren<TextMeshProUGUI>();
+        descriptions = questDescriptions.GetComponentsInChildren<TextMeshProUGUI>();
         UpdateInventoryUI();
         UpdateQuestsUI();
     }
@@ -267,6 +267,7 @@ public class UIManager : MonoBehaviour
         // We can pass in a null entry to close the dialogue window
         if (entry == null)
         {
+            Debug.Log("hello");
             DialoguePanelShown = false;
             for (int i = 0; i < dialogueButtons.Count; i++)
             {
@@ -279,6 +280,7 @@ public class UIManager : MonoBehaviour
             DialoguePanelShown = true;
             dialogueText.text = FormatDialogueText(entry.displayText);
             GameManager.Instance.CursorLocked = false;
+            GameManager.Instance.getCurrentDog().GetComponent<ThirdPersonMovement>().enabled = false;
         }
 
         if (entry.options != null)

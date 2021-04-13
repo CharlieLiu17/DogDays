@@ -2,11 +2,17 @@
 using System.Collections.Generic;
 using System.Xml;
 using UnityEngine;
+using Cinemachine;
 
 // Attached to a dialogue source like an NPC and given a DialogueEntry.
 public class DialogueHandler : MonoBehaviour
 {
     private DialogueEntry currentDialogue;
+
+    private Human_Movement hm;
+
+    [SerializeField]
+    private CinemachineVirtualCamera vcam;
 
     [SerializeField]
     private string _dialogueName;
@@ -20,6 +26,10 @@ public class DialogueHandler : MonoBehaviour
             if (_dialogueName == string.Empty || _dialogueName == null)
             {
                 UIManager.Instance.DialoguePanelShown = false;
+                GameManager.Instance.getCurrentDog().GetComponent<ThirdPersonMovement>().enabled = true;
+                hm.inDialogue = false;
+                vcam.enabled = false;
+                GameManager.Instance.freeLookScript.enabled = true;
             }
             else
             {
@@ -46,6 +56,7 @@ public class DialogueHandler : MonoBehaviour
     void Start()
     {
         GetCurrentDialogueFromXML();
+        hm = GetComponent<Human_Movement>();
         //DisplayCurrentDialogue();
 
         // Test Code
