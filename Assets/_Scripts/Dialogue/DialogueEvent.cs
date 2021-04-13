@@ -61,7 +61,6 @@ public class DialogueEvent
                 Debug.Log("No event type defined!");
                 break;
         }
-        Debug.Log("hello2");
         GameManager.Instance.getCurrentDog().GetComponent<ThirdPersonMovement>().enabled = true;
     }
 }
