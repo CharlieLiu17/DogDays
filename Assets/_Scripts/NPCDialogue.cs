@@ -44,6 +44,8 @@ public class NPCDialogue : MonoBehaviour
             UIManager.Instance.DialogueInitiationTextShown = false;
             hm.inDialogue = true;
             GameManager.Instance.freeLookScript.enabled = false;
+            GameManager.Instance.setNpcEngaged(gameObject);
+            GameManager.Instance.TriggerQuestEvent(QuestEvent.SPEAK_TO_NPC);
             vcam.enabled = true;
         }
     }

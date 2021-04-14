@@ -19,8 +19,10 @@ public class GameManager : MonoBehaviour
     private int transitionTime;
     [SerializeField]
     private GameObject[] dontDestroy; //THE REFERENCES TO THE DOGS
-    
-    
+    [SerializeField]
+    private GameObject npcEngaged;
+
+
     public CinemachineFreeLook freeLookScript;
     [SerializeField]
     private Transform[] dogSpawnTransforms = new Transform[2];
@@ -59,7 +61,7 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
-  
+
     // Allows us to check if the player has a quest of the given type
     private Dictionary<QuestTypes, bool> hasQuestType = null;
 
@@ -67,7 +69,7 @@ public class GameManager : MonoBehaviour
     public int InventoryCapacity { get; set; }
 
     private bool cursorLocked;
-    public bool CursorLocked { 
+    public bool CursorLocked {
         get { return cursorLocked; }
         set
         {
@@ -79,7 +81,7 @@ public class GameManager : MonoBehaviour
             {
                 Cursor.lockState = CursorLockMode.None;
             }
-        } 
+        }
     }
 
     public Dogs currentDog;
@@ -98,7 +100,7 @@ public class GameManager : MonoBehaviour
             { QuestTypes.OBTAIN, false },
             { QuestTypes.SPEAK, false }
         };
-        
+
 
         // Testing inventory system
         //AddItemToInventory(Reference.Instance.GetItemByID(1), 1);
@@ -157,8 +159,8 @@ public class GameManager : MonoBehaviour
         // Check if we have a quest of the right type before calling the method on all the quests
         // We can cast QuestEvents to QuestTypes, see bottom of Quest class for explanation
         // If (int) qe is less than zero that means it's a COMPLETE or UPDATE call which should always go through
-        if ((int) qe < 0 || hasQuestType[(QuestTypes) qe])
-        {
+        //if ((int)qe < 0 /**|| hasQuestType[(QuestTypes)qe] **/)
+        //{
             foreach (Quest quest in activeQuests)
             {
                 switch (qe)
@@ -178,9 +180,24 @@ public class GameManager : MonoBehaviour
                     case QuestEvent.SPEAK_TO_NPC:
                         quest.OnSpeakToNPC();
                         break;
+                    case QuestEvent.REMOVE_ITEM:
+                        quest.OnRemoveItem();
+                        break;
+                    default:
+                        break;
                 }
             }
-        }
+        //}
+    }
+
+    public GameObject getNpcEngaged()
+    {
+        return npcEngaged;
+    }
+
+    public void setNpcEngaged(GameObject npc)
+    {
+        npcEngaged = npc;
     }
 
     public List<Quest> getActiveQuests()
@@ -195,7 +212,7 @@ public class GameManager : MonoBehaviour
         if (inventory.Find(invItem => invItem.item == item) != null) // Handle multiple of the same item
         {
             inventory.Find(invItem => invItem.item == item).amount += amount;
-        } 
+        }
         else
         {
             inventory.Add(new InventoryItem(item, amount));
@@ -203,7 +220,7 @@ public class GameManager : MonoBehaviour
         // Right now we're updating the display every time it changes. Once we have inventory be opened using a key we should call this method
         // then and only then. That goes for all the calls to UpdateInventoryUI you see in this file.
         UIManager.Instance.UpdateInventoryUI();
-        TriggerQuestEvent(QuestEvent.UPDATE);
+        TriggerQuestEvent(QuestEvent.OBTAIN_ITEM);
     }
     public void AddItemToInventory(InventoryItem inventoryItem)
     {
@@ -218,7 +235,7 @@ public class GameManager : MonoBehaviour
             inventory.Add(inventoryItem);
         }
         UIManager.Instance.UpdateInventoryUI();
-        TriggerQuestEvent(QuestEvent.UPDATE);
+        TriggerQuestEvent(QuestEvent.OBTAIN_ITEM);
     }
     // Amount defaults to 1 because removing 0 doesn't make sense.
     public void RemoveItemFromInventory(Item item, int amount = 1)
@@ -229,7 +246,7 @@ public class GameManager : MonoBehaviour
         if (correspondingEntry == null)
         {
             return;
-        } 
+        }
         else
         {
             correspondingEntry.amount -= amount;
@@ -240,6 +257,7 @@ public class GameManager : MonoBehaviour
             }
         }
         UIManager.Instance.UpdateInventoryUI();
+        TriggerQuestEvent(QuestEvent.REMOVE_ITEM);
     }
     public void RemoveItemFromInventory(InventoryItem inventoryItem)
     {
@@ -260,6 +278,7 @@ public class GameManager : MonoBehaviour
             inventory.Remove(correspondingEntry);
         }
         UIManager.Instance.UpdateInventoryUI();
+        TriggerQuestEvent(QuestEvent.REMOVE_ITEM);
         foreach (InventoryItem item in inventory)
         {
             Debug.Log(item.ToString());
@@ -271,7 +290,7 @@ public class GameManager : MonoBehaviour
         if (correspondingEntry == null || correspondingEntry.amount < amount)
         {
             return false;
-        } 
+        }
         else
         {
             return true;
@@ -315,7 +334,7 @@ public class GameManager : MonoBehaviour
         kali.transform.rotation = dogSpawnTransforms[0].rotation;
         kali.transform.position = dogSpawnTransforms[1].position; //index 1 always kali
         kali.transform.rotation = dogSpawnTransforms[1].rotation;
-        
+
         transition.SetBool("Transition", false);
     }
 
@@ -340,7 +359,7 @@ public class GameManager : MonoBehaviour
     }
     public GameObject getCurrentDog()
     {
-        switch(currentDog)
+        switch (currentDog)
         {
             case Dogs.Kobe:
                 return dontDestroy[0];
@@ -351,6 +370,9 @@ public class GameManager : MonoBehaviour
 
         }
     }
+
+    
+
     #endregion
 
 }

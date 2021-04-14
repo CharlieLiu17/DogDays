@@ -10,6 +10,7 @@ public class Quest : MonoBehaviour
     public string description;
     public Sprite sprite;
     public QuestTypes type; // See the bottom of this file for details
+    public Item dogTreats; // every quest's reward
 
 #region Quest Event Methods
 // These are different events we can use to trigger quest progress. 
@@ -23,6 +24,7 @@ public class Quest : MonoBehaviour
     public virtual void OnObtainItem() { }
     public virtual void OnEnterRegion() { }
     public virtual void OnSpeakToNPC() { }
+    public virtual void OnRemoveItem() { }
     #endregion
 }
 // These are numbered so they correspond to QuestTypes and can be matched to them with a cast
@@ -32,7 +34,8 @@ public enum QuestEvent
     COMPLETE = -1,
     OBTAIN_ITEM = 0,
     ENTER_REGION = 1,
-    SPEAK_TO_NPC = 2
+    SPEAK_TO_NPC = 2,
+    REMOVE_ITEM = 3
 }
 // This are used improve efficiency by only calling certain action calls when the player has at least one quest of the corresponding type
 public enum QuestTypes

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class InventorySlot : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class InventorySlot : MonoBehaviour
     private InventoryItem inventoryItem;
 
     public Button removeButton;
+    public TextMeshProUGUI amount;
     public Image getIcon() {
         return this.icon;
     }
@@ -30,6 +32,7 @@ public class InventorySlot : MonoBehaviour
         this.inventoryItem = inventoryItem;
         removeButton.interactable = true;
         removeButton.gameObject.GetComponent<Image>().sprite = filledRemoveIcon;
+        amount.text = inventoryItem.amount.ToString();
         icon.sprite = inventoryItem.item.sprite;
     }
 
@@ -47,5 +50,6 @@ public class InventorySlot : MonoBehaviour
         icon.sprite = emptySprite;
         removeButton.gameObject.GetComponent<Image>().sprite = emptyRemoveIcon;
         removeButton.interactable = false;
+        amount.text = "";
     }
 }

@@ -31,6 +31,7 @@ public class DialogueHandler : MonoBehaviour
                 vcam.enabled = false;
                 GameManager.Instance.freeLookScript.enabled = true;
                 GameManager.Instance.CursorLocked = true;
+                GameManager.Instance.setNpcEngaged(null);
             }
             else
             {

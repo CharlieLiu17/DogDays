@@ -16,4 +16,4 @@ MonoBehaviour:
   displayName: Dog Treats
   internalName: Dog Treats
   description: Some cool treats to collect :)
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: f0f0751d65ae07e409b335a84549c7da, type: 3}
