@@ -35,6 +35,10 @@ public class RetrieveCakeQuest : Quest //monobehavior "abstract class"
     // For example: you collect all 3 bells, OnComplete is called and gives you 500 Gold and a new quest to collect 5 whistles
     public override void OnComplete()
     {
+        DialogueHandler dh = GameManager.Instance.getCurrentDog().GetComponent<DialogueHandler>();
+        dh.DialogueName = "ChocolateCakeQuestCompletion";
+        dh.DisplayCurrentDialogue();
+        UIManager.Instance.DialogueInitiationTextShown = false;
         Debug.Log("Great Job!");
     }
     public override void OnObtainItem()

@@ -14,8 +14,7 @@ public class UIManager : MonoBehaviour
     private void Awake()
     {
         if (_instance != null && _instance != this)
-        {
-            Debug.LogWarning("Attempted to Instantiate multiple InventoryUIManagers in one scene!");
+        { 
             Destroy(this.gameObject);
         }
         else

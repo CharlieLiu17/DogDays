@@ -25,11 +25,11 @@ public class Human_Movement : MonoBehaviour
         thisTransform = GetComponent<Transform>();
         anim = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
-        currentTransformIndex = Random.Range(0, NPC_Manager.Instance.locations.Length);
+        /**currentTransformIndex = Random.Range(0, NPC_Manager.Instance.locations.Length);
         //currentLocation = NPC_Manager.Instance.locations[currentTransformIndex];
         thisTransform.position = NPC_Manager.Instance.locations[currentTransformIndex].transform.position;
         //Debug.Log(currentTransformIndex);
-        NPC_Manager.Instance.locations[currentTransformIndex].isOccupied = true;
+        NPC_Manager.Instance.locations[currentTransformIndex].isOccupied = true;**/
     }
 
     // Update is called once per frame
@@ -41,26 +41,30 @@ public class Human_Movement : MonoBehaviour
             if (!agent.hasPath) //only counts the timer when not moving
             {
                 timer += Time.deltaTime;
+            } else {
             }
             if (timer >= idleTime)
             {
+                Debug.Log(currentTransformIndex);
                 NPC_Manager.Instance.locations[currentTransformIndex].isOccupied = false;
                 //loop until it reaches a not occupied spot
                 if (currentTransformIndex == NPC_Manager.Instance.locations.Length - 1)
                 {
                     currentTransformIndex = -1; // -1 + 1 reset back to 0
                 }
-                while (NPC_Manager.Instance.locations[currentTransformIndex + 1].isOccupied == true)
+                currentTransformIndex++;
+                while (NPC_Manager.Instance.locations[currentTransformIndex].isOccupied)
                 {
+                    Debug.Log(currentTransformIndex + name);
                     if (currentTransformIndex == NPC_Manager.Instance.locations.Length - 1)
                     {
                         currentTransformIndex = -1; // -1 + 1 reset back to 0
                     }
                     currentTransformIndex++;
                 }
-                currentLocation = NPC_Manager.Instance.locations[++currentTransformIndex];
+                currentLocation = NPC_Manager.Instance.locations[currentTransformIndex];
                 agent.SetDestination(currentLocation.transform.position);
-                currentLocation.isOccupied = true;
+                NPC_Manager.Instance.locations[currentTransformIndex].isOccupied = true;
                 timer = 0; //reset
                 moveSwitch = true;
                 moving = true;

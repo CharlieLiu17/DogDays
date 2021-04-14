@@ -36,7 +36,17 @@ public class NPC_Manager : MonoBehaviour
     {
         for (int i = 0; i < npcs.Length; i++)
         {
-
+            int currentTransformIndex = Random.Range(0, NPC_Manager.Instance.locations.Length);
+            //int currentTransformIndex = i; for testing
+            if (!locations[currentTransformIndex].isOccupied)
+            {
+                npcs[i].transform.position = locations[currentTransformIndex].transform.position;
+                npcs[i].setCurrentTransformationIndex(currentTransformIndex);
+                locations[currentTransformIndex].isOccupied = true;
+            } else
+            {
+                i--; //this is the most shit code eever
+            }
         }
     }
 
