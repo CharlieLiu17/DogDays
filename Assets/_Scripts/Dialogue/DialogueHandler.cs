@@ -9,7 +9,7 @@ public class DialogueHandler : MonoBehaviour
 {
     private DialogueEntry currentDialogue;
 
-    private Human_Movement hm;
+    private NPC_Movement hm;
 
     [SerializeField]
     private CinemachineVirtualCamera vcam;
@@ -58,7 +58,7 @@ public class DialogueHandler : MonoBehaviour
     void Start()
     {
         GetCurrentDialogueFromXML();
-        hm = GetComponent<Human_Movement>();
+        hm = GetComponent<NPC_Movement>();
         //DisplayCurrentDialogue();
 
         // Test Code
