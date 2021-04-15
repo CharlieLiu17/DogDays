@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<DialogueEntry>
+  <DisplayText> Cod: WOW! You two found my ball? Thanks, you two! I'm going to go have so much fun with this later!</DisplayText>
+  <Options>
+    <Option>
+      <SelectOnEnterPressed>true</SelectOnEnterPressed>
+      <DisplayText>Next</DisplayText>
+      <NextDialogue></NextDialogue>
+      <Events>
+        <Event>
+          <Type>EndDialogue</Type>
+        </Event>
+      </Events>
+    </Option>
+  </Options>
+</DialogueEntry>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<DialogueEntry>
+  <DisplayText> Tilapia: No way. You got it?!?! And you're giving it to me?!? Oh you two are such a good boy and good girl.</DisplayText>
+  <Options>
+    <Option>
+      <SelectOnEnterPressed>true</SelectOnEnterPressed>
+      <DisplayText>YES</DisplayText>
+      <NextDialogue>WatermelonQuestCompletion1</NextDialogue>
+    </Option>
+  </Options>
+</DialogueEntry>

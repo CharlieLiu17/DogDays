@@ -30,16 +30,19 @@ public class PauseMenuFunctions : MonoBehaviour
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = !GameIsPaused;
+        GameManager.Instance.CursorLocked = true;
     }
     public void Pause()
     {
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = !GameIsPaused;
+        GameManager.Instance.CursorLocked = false;
     }
     public void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        GameManager.Instance.Restart();
         Resume();
     }
     public void Quit()

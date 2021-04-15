@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<DialogueEntry>
+  <DisplayText> Tilapia:  I know I can't make up for this gift, but here are some dog treats, you two deserve them!</DisplayText>
+  <Options>
+    <Option>
+      <SelectOnEnterPressed>true</SelectOnEnterPressed>
+      <DisplayText>Next</DisplayText>
+      <NextDialogue></NextDialogue>
+      <Events>
+        <Event>
+          <Type>EndDialogue</Type>
+        </Event>
+      </Events>
+    </Option>
+  </Options>
+</DialogueEntry>

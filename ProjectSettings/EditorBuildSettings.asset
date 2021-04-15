@@ -6,12 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: Assets/FImpossible Creations/FBasic Assets/DEMO FBasic Assets/S_FBasic Demo  Draggable
-      Example.unity
+    path: Assets/Downloaded Assets/FImpossible Creations/FBasic Assets/DEMO FBasic
+      Assets/S_FBasic Demo  Draggable Example.unity
     guid: eee1070ae35e9da408ad8f010a9b3132
   - enabled: 0
-    path: Assets/FImpossible Creations/FBasic Assets/DEMO FBasic Assets/S_FBasic Demo
-      Scene.unity
+    path: Assets/Downloaded Assets/FImpossible Creations/FBasic Assets/DEMO FBasic
+      Assets/S_FBasic Demo Scene.unity
     guid: 5e234d73e8548a0488cdd5e83c130256
   - enabled: 0
     path: 
@@ -19,7 +19,19 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/Start Menu.unity
     guid: c603e7218fcc81c499c6fb58009ef898
-  - enabled: 1
-    path: Assets/_Scenes/Game.unity
+  - enabled: 0
+    path: Assets/Downloaded Assets/City park/Scenes/SampleScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/_Scenes/House1.unity
+    guid: 8ceed04a68a3ff448a41848bd894ab5b
+  - enabled: 1
+    path: Assets/_Scenes/Culdesac.unity
+    guid: 9f49531f95de22b40a42b3c28850afc6
+  - enabled: 1
+    path: Assets/_Scenes/House2.unity
+    guid: c31091c31814940499033ca5344f72a1
+  - enabled: 1
+    path: Assets/_Scenes/House3.unity
+    guid: be39156da4b60b445b8a6315615f5dfe
   m_configObjects: {}

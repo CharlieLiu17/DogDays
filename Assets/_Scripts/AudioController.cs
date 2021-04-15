@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class AudioController : MonoBehaviour
 {
-    public AudioSource audio;
+    private AudioSource audioSource;
     public float volumeLevel;
 
     // Start is called before the first frame update
     void Start()
     {
-        audio = GetComponent<AudioSource>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -18,11 +18,11 @@ public class AudioController : MonoBehaviour
     {
         if (PauseMenuFunctions.GameIsPaused)
         {
-            audio.volume = 0.5f * volumeLevel;
+            audioSource.volume = 0.5f * volumeLevel;
         } else
         {
 
-            audio.volume = volumeLevel;
+            audioSource.volume = volumeLevel;
         }
     }
 }

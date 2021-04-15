@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<DialogueEntry>
+  <DisplayText>Cod: I'm feeling kind of down recently. I can't find my soccer ball!</DisplayText>
+    <Options>
+      <Option>
+        <SelectOnEnterPressed>true</SelectOnEnterPressed>
+        <DisplayText>Next</DisplayText>
+        <NextDialogue>SoccerBallDialogue2</NextDialogue>
+      </Option>
+    </Options>
+</DialogueEntry>

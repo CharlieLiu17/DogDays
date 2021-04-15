@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<DialogueEntry>
+  <DisplayText>Tilapia: A big, big storm somehow blew it all the way up there, and without a ladder, how do we get it?</DisplayText>
+    <Options>
+      <Option>
+        <SelectOnEnterPressed>true</SelectOnEnterPressed>
+        <DisplayText>Next</DisplayText>
+        <NextDialogue>WatermelonDialogue3</NextDialogue>
+      </Option>
+    </Options>
+</DialogueEntry>

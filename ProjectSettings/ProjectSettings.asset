@@ -608,10 +608,10 @@ PlayerSettings:
   facebookXfbml: 0
   facebookFrictionlessRequests: 1
   apiCompatibilityLevel: 6
-  cloudProjectId: dcff1577-40a0-4322-944f-2a1c52b2c02a
+  cloudProjectId: 785b83f7-fc83-4130-979a-2499bc4be802
   framebufferDepthMemorylessMode: 0
-  projectName: Kali and Kobe!
-  organizationId: charlieliu2222_unity
+  projectName: Kali and Kobe! (1)
+  organizationId: clames
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0

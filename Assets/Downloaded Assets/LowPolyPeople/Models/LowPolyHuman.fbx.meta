@@ -1,0 +1,533 @@
+fileFormatVersion: 2
+guid: 2a5cb3a91b481874ea38a50a7539014d
+timeCreated: 1548591545
+licenseType: Store
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Arm-1.L
+    100002: Arm-1.L.001
+    100004: Arm-2.L
+    100006: Arm-2.L.001
+    100008: Arm-2.L.001_end
+    100010: Arm-2.L_end
+    100012: Armature
+    100014: Back1
+    100016: Back2
+    100018: Body
+    100020: Bone
+    100022: Bone.001
+    100024: Bone.002
+    100026: Bone.002_end
+    100028: Bone.003
+    100030: Bone.004
+    100032: Bone.005
+    100034: Bone.005_end
+    100036: Head
+    100038: Head_end
+    100040: //RootNode
+    100042: MansHair-1
+    100044: MansHair-2
+    100046: MansHair-3
+    100048: MansHair-4
+    100050: Neck
+    100052: Shoulder.L
+    100054: Shoulder.L.001
+    100056: SoldierHatHair
+    100058: WomenHair-1
+    100060: WomenHair-2
+    100062: WomenHair-3
+    400000: Arm-1.L
+    400002: Arm-1.L.001
+    400004: Arm-2.L
+    400006: Arm-2.L.001
+    400008: Arm-2.L.001_end
+    400010: Arm-2.L_end
+    400012: Armature
+    400014: Back1
+    400016: Back2
+    400018: Body
+    400020: Bone
+    400022: Bone.001
+    400024: Bone.002
+    400026: Bone.002_end
+    400028: Bone.003
+    400030: Bone.004
+    400032: Bone.005
+    400034: Bone.005_end
+    400036: Head
+    400038: Head_end
+    400040: //RootNode
+    400042: MansHair-1
+    400044: MansHair-2
+    400046: MansHair-3
+    400048: MansHair-4
+    400050: Neck
+    400052: Shoulder.L
+    400054: Shoulder.L.001
+    400056: SoldierHatHair
+    400058: WomenHair-1
+    400060: WomenHair-2
+    400062: WomenHair-3
+    2300000: MansHair-4
+    3300000: MansHair-4
+    4300000: MansHair-3
+    4300002: MansHair-2
+    4300004: WomenHair-3
+    4300006: SoldierHatHair
+    4300008: MansHair-1
+    4300010: WomenHair-2
+    4300012: WomenHair-1
+    4300014: Body
+    4300016: MansHair-4
+    7400000: Walk
+    7400002: Run
+    7400004: Idle-1
+    7400006: Idle-2
+    9500000: //RootNode
+    13700000: Body
+    13700002: MansHair-1
+    13700004: MansHair-2
+    13700006: MansHair-3
+    13700008: SoldierHatHair
+    13700010: WomenHair-1
+    13700012: WomenHair-2
+    13700014: WomenHair-3
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Walk
+      takeName: Armature|ArmatureAction.003
+      firstFrame: 10
+      lastFrame: 50
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Back1
+        weight: 1
+      - path: Armature/Back1/Back2
+        weight: 1
+      - path: Armature/Back1/Back2/Neck
+        weight: 1
+      - path: Armature/Back1/Back2/Neck/Head
+        weight: 1
+      - path: Armature/Back1/Back2/Neck/Head/Head_end
+        weight: 1
+      - path: Armature/Bone
+        weight: 1
+      - path: Armature/Bone/Bone.001
+        weight: 1
+      - path: Armature/Bone/Bone.001/Bone.002
+        weight: 1
+      - path: Armature/Bone/Bone.001/Bone.002/Bone.002_end
+        weight: 1
+      - path: Armature/Bone.003
+        weight: 1
+      - path: Armature/Bone.003/Bone.004
+        weight: 1
+      - path: Armature/Bone.003/Bone.004/Bone.005
+        weight: 1
+      - path: Armature/Bone.003/Bone.004/Bone.005/Bone.005_end
+        weight: 1
+      - path: Armature/Shoulder.L
+        weight: 1
+      - path: Armature/Shoulder.L/Arm-1.L
+        weight: 1
+      - path: Armature/Shoulder.L/Arm-1.L/Arm-2.L
+        weight: 1
+      - path: Armature/Shoulder.L/Arm-1.L/Arm-2.L/Arm-2.L_end
+        weight: 1
+      - path: Armature/Shoulder.L.001
+        weight: 1
+      - path: Armature/Shoulder.L.001/Arm-1.L.001
+        weight: 1
+      - path: Armature/Shoulder.L.001/Arm-1.L.001/Arm-2.L.001
+        weight: 1
+      - path: Armature/Shoulder.L.001/Arm-1.L.001/Arm-2.L.001/Arm-2.L.001_end
+        weight: 1
+      - path: Body
+        weight: 1
+      - path: MansHair-1
+        weight: 1
+      - path: MansHair-2
+        weight: 1
+      - path: MansHair-3
+        weight: 1
+      - path: MansHair-4
+        weight: 1
+      - path: SoldierHatHair
+        weight: 1
+      - path: WomenHair-1
+        weight: 1
+      - path: WomenHair-2
+        weight: 1
+      - path: WomenHair-3
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Run
+      takeName: Armature|ArmatureAction.003
+      firstFrame: 60
+      lastFrame: 76
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Back1
+        weight: 1
+      - path: Armature/Back1/Back2
+        weight: 1
+      - path: Armature/Back1/Back2/Neck
+        weight: 1
+      - path: Armature/Back1/Back2/Neck/Head
+        weight: 1
+      - path: Armature/Back1/Back2/Neck/Head/Head_end
+        weight: 1
+      - path: Armature/Bone
+        weight: 1
+      - path: Armature/Bone/Bone.001
+        weight: 1
+      - path: Armature/Bone/Bone.001/Bone.002
+        weight: 1
+      - path: Armature/Bone/Bone.001/Bone.002/Bone.002_end
+        weight: 1
+      - path: Armature/Bone.003
+        weight: 1
+      - path: Armature/Bone.003/Bone.004
+        weight: 1
+      - path: Armature/Bone.003/Bone.004/Bone.005
+        weight: 1
+      - path: Armature/Bone.003/Bone.004/Bone.005/Bone.005_end
+        weight: 1
+      - path: Armature/Shoulder.L
+        weight: 1
+      - path: Armature/Shoulder.L/Arm-1.L
+        weight: 1
+      - path: Armature/Shoulder.L/Arm-1.L/Arm-2.L
+        weight: 1
+      - path: Armature/Shoulder.L/Arm-1.L/Arm-2.L/Arm-2.L_end
+        weight: 1
+      - path: Armature/Shoulder.L.001
+        weight: 1
+      - path: Armature/Shoulder.L.001/Arm-1.L.001
+        weight: 1
+      - path: Armature/Shoulder.L.001/Arm-1.L.001/Arm-2.L.001
+        weight: 1
+      - path: Armature/Shoulder.L.001/Arm-1.L.001/Arm-2.L.001/Arm-2.L.001_end
+        weight: 1
+      - path: Body
+        weight: 1
+      - path: MansHair-1
+        weight: 1
+      - path: MansHair-2
+        weight: 1
+      - path: MansHair-3
+        weight: 1
+      - path: MansHair-4
+        weight: 1
+      - path: SoldierHatHair
+        weight: 1
+      - path: WomenHair-1
+        weight: 1
+      - path: WomenHair-2
+        weight: 1
+      - path: WomenHair-3
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Idle-1
+      takeName: Armature|ArmatureAction.003
+      firstFrame: 90
+      lastFrame: 130
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Back1
+        weight: 1
+      - path: Armature/Back1/Back2
+        weight: 1
+      - path: Armature/Back1/Back2/Neck
+        weight: 1
+      - path: Armature/Back1/Back2/Neck/Head
+        weight: 1
+      - path: Armature/Back1/Back2/Neck/Head/Head_end
+        weight: 1
+      - path: Armature/Bone
+        weight: 1
+      - path: Armature/Bone/Bone.001
+        weight: 1
+      - path: Armature/Bone/Bone.001/Bone.002
+        weight: 1
+      - path: Armature/Bone/Bone.001/Bone.002/Bone.002_end
+        weight: 1
+      - path: Armature/Bone.003
+        weight: 1
+      - path: Armature/Bone.003/Bone.004
+        weight: 1
+      - path: Armature/Bone.003/Bone.004/Bone.005
+        weight: 1
+      - path: Armature/Bone.003/Bone.004/Bone.005/Bone.005_end
+        weight: 1
+      - path: Armature/Shoulder.L
+        weight: 1
+      - path: Armature/Shoulder.L/Arm-1.L
+        weight: 1
+      - path: Armature/Shoulder.L/Arm-1.L/Arm-2.L
+        weight: 1
+      - path: Armature/Shoulder.L/Arm-1.L/Arm-2.L/Arm-2.L_end
+        weight: 1
+      - path: Armature/Shoulder.L.001
+        weight: 1
+      - path: Armature/Shoulder.L.001/Arm-1.L.001
+        weight: 1
+      - path: Armature/Shoulder.L.001/Arm-1.L.001/Arm-2.L.001
+        weight: 1
+      - path: Armature/Shoulder.L.001/Arm-1.L.001/Arm-2.L.001/Arm-2.L.001_end
+        weight: 1
+      - path: Body
+        weight: 1
+      - path: MansHair-1
+        weight: 1
+      - path: MansHair-2
+        weight: 1
+      - path: MansHair-3
+        weight: 1
+      - path: MansHair-4
+        weight: 1
+      - path: SoldierHatHair
+        weight: 1
+      - path: WomenHair-1
+        weight: 1
+      - path: WomenHair-2
+        weight: 1
+      - path: WomenHair-3
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Idle-2
+      takeName: Armature|ArmatureAction.003
+      firstFrame: 140
+      lastFrame: 180
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Back1
+        weight: 1
+      - path: Armature/Back1/Back2
+        weight: 1
+      - path: Armature/Back1/Back2/Neck
+        weight: 1
+      - path: Armature/Back1/Back2/Neck/Head
+        weight: 1
+      - path: Armature/Back1/Back2/Neck/Head/Head_end
+        weight: 1
+      - path: Armature/Bone
+        weight: 1
+      - path: Armature/Bone/Bone.001
+        weight: 1
+      - path: Armature/Bone/Bone.001/Bone.002
+        weight: 1
+      - path: Armature/Bone/Bone.001/Bone.002/Bone.002_end
+        weight: 1
+      - path: Armature/Bone.003
+        weight: 1
+      - path: Armature/Bone.003/Bone.004
+        weight: 1
+      - path: Armature/Bone.003/Bone.004/Bone.005
+        weight: 1
+      - path: Armature/Bone.003/Bone.004/Bone.005/Bone.005_end
+        weight: 1
+      - path: Armature/Shoulder.L
+        weight: 1
+      - path: Armature/Shoulder.L/Arm-1.L
+        weight: 1
+      - path: Armature/Shoulder.L/Arm-1.L/Arm-2.L
+        weight: 1
+      - path: Armature/Shoulder.L/Arm-1.L/Arm-2.L/Arm-2.L_end
+        weight: 1
+      - path: Armature/Shoulder.L.001
+        weight: 1
+      - path: Armature/Shoulder.L.001/Arm-1.L.001
+        weight: 1
+      - path: Armature/Shoulder.L.001/Arm-1.L.001/Arm-2.L.001
+        weight: 1
+      - path: Armature/Shoulder.L.001/Arm-1.L.001/Arm-2.L.001/Arm-2.L.001_end
+        weight: 1
+      - path: Body
+        weight: 1
+      - path: MansHair-1
+        weight: 1
+      - path: MansHair-2
+        weight: 1
+      - path: MansHair-3
+        weight: 1
+      - path: MansHair-4
+        weight: 1
+      - path: SoldierHatHair
+        weight: 1
+      - path: WomenHair-1
+        weight: 1
+      - path: WomenHair-2
+        weight: 1
+      - path: WomenHair-3
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
