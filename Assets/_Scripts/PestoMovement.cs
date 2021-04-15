@@ -12,6 +12,8 @@ public class PestoMovement : MonoBehaviour
     // this is to determine if pesto is moving
     private bool isMoving = false;
 
+    public bool questIsActive = false;
+
 
     /// <summary>
     /// Start is called on the frame when a script is enabled just before
@@ -29,12 +31,15 @@ public class PestoMovement : MonoBehaviour
     /// </summary>
     void Update()
     {
-        animator.SetBool("isMoving", true);
-        Vector3 tempVect = new Vector3(1, 0, 0);
-        // apply our speed
-        tempVect = tempVect.normalized * speed * Time.deltaTime;
-        // modify current position by tempVect
-        rigidbody.AddForce(tempVect);
+        if (questIsActive)
+        {
+            animator.SetBool("isMoving", true);
+            Vector3 tempVect = new Vector3(1, 0, 0);
+            // apply our speed
+            tempVect = tempVect.normalized * speed * Time.deltaTime;
+            // modify current position by tempVect
+            rigidbody.AddForce(tempVect);
+        }
     }
 
 }
