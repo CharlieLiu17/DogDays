@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [System.Serializable]
 public class WatermelonQuest : Quest //monobehavior "abstract class"
@@ -10,9 +11,12 @@ public class WatermelonQuest : Quest //monobehavior "abstract class"
     private Item watermelonItem;
     [SerializeField]
     private int amountNeeded;
+    [SerializeField]
+    private GameObject npc;
     private InventoryItem reward;
     private InventoryItem watermelonInvItem;
-    private bool haveItem = false;
+    private string dialogueEndName = "WatermelonQuestCompletion";
+    private bool retrieved = false;
 
     public int rewardAmount;
     private void Start()
@@ -48,12 +52,9 @@ public class WatermelonQuest : Quest //monobehavior "abstract class"
         Predicate<InventoryItem> predicate = FindItem;
         if (Array.Find(GameManager.Instance.GetAllItemsAsArray(), predicate) != null)
         {
-            DialogueHandler dh = GameManager.Instance.getCurrentDog().GetComponent<DialogueHandler>();
-            dh.DialogueName = "ChocolateCakeQuestCompletion";
-            dh.DisplayCurrentDialogue();
-            UIManager.Instance.DialogueInitiationTextShown = false;
-            haveItem = true;
-            Debug.Log("Great Job!");
+            description = "Give the slice back to Tilapia!";
+            UIManager.Instance.UpdateQuestsUI();
+            retrieved = true;
         }
     }
     public override void OnEnterRegion()
@@ -62,20 +63,26 @@ public class WatermelonQuest : Quest //monobehavior "abstract class"
     }
     public override void OnSpeakToNPC()
     {
-        return;
+        if (GameManager.Instance.getNpcEngaged().Equals(npc) && retrieved == true)
+        {
+            npc.GetComponent<DialogueHandler>().DialogueName = dialogueEndName;
+            GameManager.Instance.RemoveItemFromInventory(watermelonInvItem);
+            OnComplete();
+            retrieved = false;
+        }
     }
     public override void OnRemoveItem()
     {
-        Predicate<InventoryItem> predicate = FindItem;
-        if (haveItem && Array.Find(GameManager.Instance.GetAllItemsAsArray(), predicate) == null)
-        {
-            OnComplete();
-        }
+        return;
     }
     #endregion
 
     public bool FindItem(InventoryItem invItem)
     {
-        return invItem.Equals(cakeInvItem);
+        return invItem.Equals(watermelonInvItem);
+    }
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        npc = GameObject.Find("Tilapia");
     }
 }

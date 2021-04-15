@@ -10,26 +10,38 @@ public class NPCDialogue : MonoBehaviour
 {
     private bool playerIsWithinRange;
     private DialogueHandler dialogueHandler;
-    private Human_Movement hm;
+    private NPC_Movement hm;
     public CinemachineVirtualCamera vcam;
 
     private void Start()
     {
         dialogueHandler = GetComponent<DialogueHandler>();
-        hm = GetComponent<Human_Movement>();
+        hm = GetComponent<NPC_Movement>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.gameObject.Equals(GameManager.Instance.getCurrentDog()))
         {
             playerIsWithinRange = true;
             UIManager.Instance.DialogueInitiationTextShown = true;
         }
     }
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.Equals(GameManager.Instance.getCurrentDog()) && !hm.inDialogue)
+        {
+            playerIsWithinRange = true;
+            UIManager.Instance.DialogueInitiationTextShown = true;
+        } else
+        {
+            playerIsWithinRange = false;
+            UIManager.Instance.DialogueInitiationTextShown = false;
+        }
+    }
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.gameObject.Equals(GameManager.Instance.getCurrentDog()))
         {
             playerIsWithinRange = false;
             UIManager.Instance.DialogueInitiationTextShown = false;
