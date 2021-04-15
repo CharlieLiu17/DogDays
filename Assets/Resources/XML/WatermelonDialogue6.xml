@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<DialogueEntry>
+  <DisplayText> Tilapia: But that's beside the point. This ladder is stuck tight. Ugh, I just want some watermelon.</DisplayText>
+  <Options>
+    <Option>
+      <SelectOnEnterPressed>true</SelectOnEnterPressed>
+      <DisplayText>YES</DisplayText>
+      <NextDialogue></NextDialogue>
+      <Events>
+        <Event>
+          <Type>GiveQuest</Type>
+          <QuestID>4</QuestID>
+        </Event>
+        <Event>
+          <Type>EndDialogue</Type>
+        </Event>
+      </Events>
+    </Option>
+  </Options>
+</DialogueEntry>

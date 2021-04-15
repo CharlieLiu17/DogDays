@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<DialogueEntry>
+  <DisplayText>Tilapia: I've been pacing back and forth all day, trying to find a way to get that ladder down from those trees!</DisplayText>
+    <Options>
+      <Option>
+        <SelectOnEnterPressed>true</SelectOnEnterPressed>
+        <DisplayText>Next</DisplayText>
+        <NextDialogue>WatermelonDialogue2</NextDialogue>
+      </Option>
+    </Options>
+</DialogueEntry>

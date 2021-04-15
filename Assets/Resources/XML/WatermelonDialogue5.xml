@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<DialogueEntry>
+  <DisplayText>Tilapia: The watermelon tree is characterized by its beautiful red leaves, but the annual slice of watermelon it produces is what I really want.</DisplayText>
+    <Options>
+      <Option>
+        <SelectOnEnterPressed>true</SelectOnEnterPressed>
+        <DisplayText>Next</DisplayText>
+        <NextDialogue>WatermelonDialogue5</NextDialogue>
+      </Option>
+    </Options>
+</DialogueEntry>
