@@ -23,6 +23,7 @@ public class WatermelonQuest : Quest //monobehavior "abstract class"
     {
         watermelonInvItem = new InventoryItem(watermelonItem, amountNeeded); // the desired item of the quest
         reward = new InventoryItem(dogTreats, rewardAmount);
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     #region Quest Event Methods

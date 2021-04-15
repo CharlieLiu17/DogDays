@@ -11,25 +11,30 @@ public class Door : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        
-        if (Input.GetKeyDown(KeyCode.E) && other.gameObject.tag == "Player") 
+        if (other.gameObject.Equals(GameManager.Instance.getCurrentDog()))
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                UIManager.Instance.DoorOpenTextShown = false;
+                GameManager.Instance.LoadNextScene(nextBuildIndex, nextTransforms);
+            }
+        } else
         {
             UIManager.Instance.DoorOpenTextShown = false;
-            GameManager.Instance.LoadNextScene(nextBuildIndex, nextTransforms);
         }
     }
 
     // If both dogs walk into collection range and one exits, the text will no longer appear. I'm not quite sure how to solve this yet.
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player") // Both the dogs have the Player tag
+        if (other.gameObject.Equals(GameManager.Instance.getCurrentDog())) // Both the dogs have the Player tag
         {
             UIManager.Instance.DoorOpenTextShown = true;
         }
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "Player") // Both the dogs have the Player tag
+        if (other.gameObject.Equals(GameManager.Instance.getCurrentDog())) // Both the dogs have the Player tag
         {
             UIManager.Instance.DoorOpenTextShown = false;
         }

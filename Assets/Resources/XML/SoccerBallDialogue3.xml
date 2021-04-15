@@ -14,6 +14,7 @@
         <Event>
           <Type>EndDialogue</Type>
         </Event>
+        </Events>
       </Option>
     </Options>
 </DialogueEntry>

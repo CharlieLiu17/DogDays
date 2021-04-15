@@ -19,8 +19,8 @@ public class GameManager : MonoBehaviour
     private int transitionTime;
     [SerializeField]
     private GameObject[] dontDestroy; //THE REFERENCES TO THE DOGS
-    [SerializeField]
     private GameObject npcEngaged;
+    private bool inDoor;
 
 
     public CinemachineFreeLook freeLookScript;
@@ -375,6 +375,14 @@ public class GameManager : MonoBehaviour
 
     #endregion
 
+    public bool getInDoor()
+    {
+        return inDoor;
+    }
+    public void setInDoor(bool value)
+    {
+        inDoor = value;
+    }
 }
 public enum Dogs { 
     Kobe, 

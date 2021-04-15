@@ -53,6 +53,7 @@ public class DialogueEvent
                 break;
             case DialogueEventType.GiveQuest:
                 GameManager.Instance.AddQuest(Reference.Instance.GetQuestByID(questEventID));
+                GameManager.Instance.TriggerQuestEvent(QuestEvent.OBTAIN_ITEM);
                 break;
             case DialogueEventType.GiveItem:
                 GameManager.Instance.AddItemToInventory(new InventoryItem(itemEventType, itemEventQuantity));
