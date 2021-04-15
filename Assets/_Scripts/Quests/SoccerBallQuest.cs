@@ -48,7 +48,7 @@ public class SoccerBallQuest : Quest
     public override void OnComplete()
     {
         GameManager.Instance.AddItemToInventory(reward);
-        GameManager.Instance.RemoveQuestByID(1);
+        GameManager.Instance.RemoveQuestByID(id);
         UIManager.Instance.UpdateQuestsUI();
     }
     public override void OnObtainItem()

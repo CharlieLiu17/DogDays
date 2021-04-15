@@ -237,10 +237,11 @@ public class UIManager : MonoBehaviour
         {
             Debug.LogError("Player is carrying " + (names.Length - 4) + " more quests than their inventory capacity!");
             Debug.Log("Quest Length: " + names.Length);
-        }
-        if (names.Length == 0)
+        } 
+        for (int i = 0; i < names.Length; i++)
         {
-            
+            names[i].text = " ";
+            descriptions[i].text = " ";
         }
         for (int i = 0; i < GameManager.Instance.getActiveQuests().Count; i++)
         {

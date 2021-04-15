@@ -41,6 +41,7 @@ public class RetrieveCakeQuest : Quest //monobehavior "abstract class"
     {
         GameManager.Instance.AddItemToInventory(reward);
         GameManager.Instance.RemoveQuestByID(id);
+        UIManager.Instance.UpdateQuestsUI();
     }
     public override void OnObtainItem()
     {
