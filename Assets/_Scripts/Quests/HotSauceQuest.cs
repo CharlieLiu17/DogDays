@@ -38,7 +38,7 @@ public class HotSauceQuest : Quest
     {
         Debug.Log("Great Job on getting the hot sauce!");
     }
-    public override void OnObtainItem()
+    public override void OnObtainItem(InventoryItem item)
     {
         OnComplete();
     }

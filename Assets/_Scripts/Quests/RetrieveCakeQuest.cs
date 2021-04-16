@@ -24,17 +24,23 @@ public class RetrieveCakeQuest : Quest //monobehavior "abstract class"
     #region Quest Event Methods
     // These are different events we can use to trigger quest progress. 
 
-    // Should be called infrequently and mainly used for resolving bugs.
-    // For example, in a fetch quest we might use this to resolve the case where OnObtainItem() doesn't trigger when it should
-    public override void OnUpdate()
+    public override void OnStart()
     {
-        /*Predicate<InventoryItem> predicate = FindItem;
-        if (Array.Find(GameManager.Instance.GetAllItemsAsArray(), predicate) != null)
+        if (GameManager.Instance.HasItem(cakeItem, 1))
         {
-            OnComplete();
-        } */
-
+            StartCoroutine(DisplayDialogueAfterPause());
+        }
     }
+
+    private IEnumerator DisplayDialogueAfterPause()
+    {
+        yield return new WaitForSeconds(0.25f);
+        DialogueHandler dh = GameManager.Instance.getCurrentDog().GetComponent<DialogueHandler>();
+        dh.DialogueName = "ChocolateCake/ChocolateCakeQuestCompletion";
+        UIManager.Instance.DialogueInitiationTextShown = false;
+        dh.DisplayCurrentDialogue();
+    }
+
     // Called when the quest is complete and runs some code for rewards, starting a new quest, etc.
     // For example: you collect all 3 bells, OnComplete is called and gives you 500 Gold and a new quest to collect 5 whistles
     public override void OnComplete()
@@ -42,20 +48,20 @@ public class RetrieveCakeQuest : Quest //monobehavior "abstract class"
         GameManager.Instance.AddItemToInventory(reward);
         GameManager.Instance.RemoveQuestByID(id);
         UIManager.Instance.UpdateQuestsUI();
+        GameObject.Find("Tuna").GetComponent<DialogueHandler>().setDialogueName("ChocolateCake/EarlyCompletion");
     }
-    public override void OnObtainItem()
+    public override void OnObtainItem(InventoryItem item)
     {
-        Predicate<InventoryItem> predicate = FindItem;
-        if (Array.Find(GameManager.Instance.GetAllItemsAsArray(), predicate) != null)
+        if (item != null && item.item.Equals(cakeItem))
         {
             DialogueHandler dh = GameManager.Instance.getCurrentDog().GetComponent<DialogueHandler>();
-            dh.DialogueName = "ChocolateCakeQuestCompletion";
+            dh.setDialogueName("ChocolateCake/ChocolateCakeQuestCompletion");
             dh.DisplayCurrentDialogue();
             UIManager.Instance.DialogueInitiationTextShown = false;
-            haveItem = true;
             Debug.Log("Great Job!");
         }
     }
+
     public override void OnEnterRegion()
     {
         return;
@@ -64,18 +70,12 @@ public class RetrieveCakeQuest : Quest //monobehavior "abstract class"
     {
         return;
     }
-    public override void OnRemoveItem()
+    public override void OnRemoveItem(InventoryItem item)
     {
-        Predicate<InventoryItem> predicate = FindItem;
-        if (haveItem && Array.Find(GameManager.Instance.GetAllItemsAsArray(), predicate) == null)
+        if (item != null && item.Equals(cakeInvItem))
         {
             OnComplete();
         }
     }
     #endregion
-
-    public bool FindItem(InventoryItem invItem)
-    {
-        return invItem.Equals(cakeInvItem);
-    }
 }

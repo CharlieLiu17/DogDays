@@ -38,7 +38,7 @@ public class PhoneQuest : Quest
     {
         Debug.Log("Great Job on getting the phone!");
     }
-    public override void OnObtainItem()
+    public override void OnObtainItem(InventoryItem item)
     {
         OnComplete();
     }

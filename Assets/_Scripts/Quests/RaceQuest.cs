@@ -39,8 +39,10 @@ public class RaceQuest : Quest
     public override void OnUpdate()
     {
         // this could get really shaky if anything else uses OnUpdate, but they're not so lmfao
-        pesto.GetComponent<PestoMovement>().questIsActive = true;
-
+        if (pesto != null)
+        {
+            pesto.GetComponent<PestoMovement>().questIsActive = true;
+        }
     }
     // Called when the quest is complete and runs some code for rewards, starting a new quest, etc.
     // For example: you collect all 3 bells, OnComplete is called and gives you 500 Gold and a new quest to collect 5 whistles
@@ -54,7 +56,7 @@ public class RaceQuest : Quest
             GameManager.Instance.LoadNextScene(4, finalTransforms);
         }
     }
-    public override void OnObtainItem()
+    public override void OnObtainItem(InventoryItem item)
     {
         return;
     }

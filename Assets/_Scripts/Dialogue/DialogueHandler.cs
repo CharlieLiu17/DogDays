@@ -57,10 +57,15 @@ public class DialogueHandler : MonoBehaviour
     public void setDialogueName(string dialogueName)
     {
         _dialogueName = dialogueName;
+        GetCurrentDialogueFromXML();
     }
 
     private void GetCurrentDialogueFromXML()
     {
+        if (_dialogueName == "")
+        {
+            return;
+        }
         // Will this work on all computers? I hope so D:
         TextAsset xmlText = Resources.Load<TextAsset>("XML/" + _dialogueName);
         if (xmlText == null)

@@ -51,7 +51,7 @@ public class SoccerBallQuest : Quest
         GameManager.Instance.RemoveQuestByID(id);
         UIManager.Instance.UpdateQuestsUI();
     }
-    public override void OnObtainItem()
+    public override void OnObtainItem(InventoryItem item)
     {
         Predicate<InventoryItem> predicate = FindItem;
         Debug.Log("cmon man");
@@ -77,10 +77,6 @@ public class SoccerBallQuest : Quest
             OnComplete();
             retrieved = false;
         }
-    }
-    public override void OnRemoveItem()
-    {
-        return;
     }
     #endregion
 
