@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     private GameObject[] dontDestroy; //THE REFERENCES TO THE DOGS
     private GameObject npcEngaged;
     private bool inDoor;
+    public Transform[] finalTransforms;
 
 
     public CinemachineFreeLook freeLookScript;
