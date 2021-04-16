@@ -47,7 +47,7 @@ public class PestoMovement : NPC_Movement
         {
             animator.SetBool("isMoving", false);
         }
-        if (crying && GameManager.Instance.getNpcEngaged().Equals(this.gameObject))
+        if (crying && GameObject.ReferenceEquals(GameManager.Instance.getNpcEngaged(),gameObject))
         {
             GetComponent<AudioSource>().Play();
             crying = false;

@@ -33,7 +33,7 @@ public class NPCDialogue : MonoBehaviour
     }
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.Equals(GameManager.Instance.getCurrentDog()) && !hm.inDialogue)
+        if (GameObject.ReferenceEquals(other.gameObject,GameManager.Instance.getCurrentDog()) && !hm.inDialogue)
         {
             playerIsWithinRange = true;
             UIManager.Instance.DialogueInitiationTextShown = true;

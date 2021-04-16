@@ -25,7 +25,7 @@ public class treeCollideScript : MonoBehaviour
     /// OnTriggerEnter is called when the Collider other enters the trigger.
     /// </summary>
     /// <param name="other">The other Collider involved in this collision.</param>
-    void OnTriggerEnter(Collider other)
+    void OnTriggerStay(Collider other)
     {
         // if quest is active
         // if player hits -> winning code

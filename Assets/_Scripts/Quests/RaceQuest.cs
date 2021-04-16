@@ -11,6 +11,7 @@ public class RaceQuest : Quest
     private InventoryItem reward;
     public int rewardAmount;
     public int hasWon = 0;
+    public Transform[] finalTransforms;
 
     public String pestoWinDialogue = "PestoWinDialogue";
     public String pestoLoseDialogue = "PestoLoseDialogue";
@@ -48,6 +49,10 @@ public class RaceQuest : Quest
         GameManager.Instance.AddItemToInventory(reward);
         GameManager.Instance.RemoveQuestByID(id);
         UIManager.Instance.UpdateQuestsUI();
+        if (GameManager.Instance.HasItem(dogTreats, 65))
+        {
+            GameManager.Instance.LoadNextScene(4, finalTransforms);
+        }
     }
     public override void OnObtainItem()
     {
