@@ -166,7 +166,7 @@ public class UIManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab) && !pauseMenu.activeSelf) // Toggle inventory menu on Tab
+        if (Input.GetKeyDown(KeyCode.Tab) && !pauseMenu.activeSelf && GameManager.Instance.getNpcEngaged() == null) // Toggle inventory menu on Tab
         {
             if (inventoryMenu == null)
             {

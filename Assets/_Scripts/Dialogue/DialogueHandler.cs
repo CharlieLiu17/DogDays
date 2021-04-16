@@ -46,6 +46,10 @@ public class DialogueHandler : MonoBehaviour
             {
                 GetCurrentDialogueFromXML();
                 DisplayCurrentDialogue();
+                if (GameManager.Instance.getNpcEngaged() == null)
+                {
+                    GameManager.Instance.setNpcEngaged(GameManager.Instance.getCurrentDog());
+                }
             }
         }
     }
@@ -100,6 +104,10 @@ public class DialogueHandler : MonoBehaviour
 
     public void DisplayCurrentDialogue()
     {
+        if (GameManager.Instance.getNpcEngaged() == null)
+        {
+            GameManager.Instance.setNpcEngaged(GameManager.Instance.getCurrentDog());
+        }
         UIManager.Instance.DisplayDialogue(currentDialogue);
     }
 }

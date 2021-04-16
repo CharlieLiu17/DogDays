@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<DialogueEntry>
+	<DisplayText> Use WASD to move and SHIFT to sprint; press F for switching dogs, TAB for inventory and quests; and E for interact. Good luck!</DisplayText>
+	<Options>
+		<Option>
+			<SelectOnEnterPressed>true</SelectOnEnterPressed>
+			<DisplayText>Thanks?</DisplayText>
+			<NextDialogue></NextDialogue>
+		</Option>
+	</Options>
+</DialogueEntry>

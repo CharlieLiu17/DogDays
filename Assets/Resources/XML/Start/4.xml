@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <DialogueEntry>
-	<DisplayText>Some of them will have quests for you. Do what they tell you! Use WASD to move and SHIFT to sprint; you know the deal. Good luck!</DisplayText>
+	<DisplayText>Some of them will have quests for you. Do what they tell you!</DisplayText>
 	<Options>
 		<Option>
 			<SelectOnEnterPressed>true</SelectOnEnterPressed>
-			<DisplayText>Thanks?</DisplayText>
-			<NextDialogue></NextDialogue>
+			<DisplayText>Alright</DisplayText>
+			<NextDialogue>Start/5</NextDialogue>
 		</Option>
 	</Options>
 </DialogueEntry>
