@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<DialogueEntry>
+  <DisplayText>Pesto: Alright, let's go!</DisplayText>
+    <Options>
+      <Option>
+        <SelectOnEnterPressed>true</SelectOnEnterPressed>
+        <DisplayText>Next</DisplayText>
+        <NextDialogue></NextDialogue>
+        <Events>
+        <Event>
+          <Type>GiveQuest</Type>
+          <QuestID>5</QuestID>
+        </Event>
+        <Event>
+          <Type>EndDialogue</Type>
+        </Event>
+        </Events>
+      </Option>
+    </Options>
+</DialogueEntry>

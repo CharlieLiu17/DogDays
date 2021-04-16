@@ -35,7 +35,7 @@ public class treeCollideScript : MonoBehaviour
         this.other = other;    
 
 
-        if (GameManager.Instance.getCurrentDog().Equals(other) || other.Equals(pesto)) {
+        if (GameManager.Instance.getCurrentDog().Equals(other.gameObject) || other.Equals(pesto)) {
             // `Instance` effectively makes script into a static object.
             // this is triggering the Enter Region method on all active quests
             GameManager.Instance.TriggerQuestEvent(QuestEvent.ENTER_REGION);    

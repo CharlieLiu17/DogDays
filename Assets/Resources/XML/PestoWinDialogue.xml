@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<DialogueEntry>
+  <DisplayText> This wasn't close. Go back and go cry to your hooman.</DisplayText>
+  <Options>
+    <Option>
+      <SelectOnEnterPressed>true</SelectOnEnterPressed>
+      <DisplayText>Ok</DisplayText>
+      <NextDialogue>PestoWinDialogue1</NextDialogue>
+    </Option>
+  </Options>
+</DialogueEntry>

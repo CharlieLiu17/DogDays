@@ -21,6 +21,10 @@ public class NPCDialogue : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (gameObject.name.Equals("Pesto Please Don't Leave"))
+        {
+            Debug.Log(other.gameObject.Equals(GameManager.Instance.getCurrentDog()));
+        }
         if (other.gameObject.Equals(GameManager.Instance.getCurrentDog()))
         {
             playerIsWithinRange = true;

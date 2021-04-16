@@ -41,6 +41,11 @@ public class DialogueHandler : MonoBehaviour
         }
     }
 
+    public void setDialogueName(string dialogueName)
+    {
+        _dialogueName = dialogueName;
+    }
+
     private void GetCurrentDialogueFromXML()
     {
         // Will this work on all computers? I hope so D:
