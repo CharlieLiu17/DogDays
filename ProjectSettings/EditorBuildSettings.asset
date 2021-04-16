@@ -20,7 +20,7 @@ EditorBuildSettings:
     path: Assets/_Scenes/Start Menu.unity
     guid: c603e7218fcc81c499c6fb58009ef898
   - enabled: 0
-    path: Assets/Downloaded Assets/City park/Scenes/SampleScene.unity
+    path: 
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
     path: Assets/_Scenes/House1.unity
@@ -34,4 +34,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/House3.unity
     guid: be39156da4b60b445b8a6315615f5dfe
+  - enabled: 1
+    path: Assets/_Scenes/DogPark.unity
+    guid: 7d0dd417ad762e241b8006a5ef2aa15a
   m_configObjects: {}

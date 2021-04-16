@@ -77,9 +77,11 @@ public class GameManager : MonoBehaviour
             if (value)
             {
                 Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = true;
             } else
             {
                 Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = false;
             }
         }
     }

@@ -166,7 +166,7 @@ public class UIManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab) && !pauseMenu.activeSelf) // Toggle inventory menu on Tab
+        if (Input.GetKeyDown(KeyCode.Tab) && !pauseMenu.activeSelf && GameManager.Instance.getNpcEngaged() == null) // Toggle inventory menu on Tab
         {
             if (inventoryMenu == null)
             {
@@ -277,6 +277,7 @@ public class UIManager : MonoBehaviour
                 dialogueButtons[i].UpdateButton(false); // The button clears itself when no option is passed in to UpdateButton
             }
             GameManager.Instance.CursorLocked = true;
+            GameManager.Instance.setNpcEngaged(null);
             return;
         } else
         {
