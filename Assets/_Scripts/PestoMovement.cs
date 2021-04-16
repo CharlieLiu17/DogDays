@@ -5,9 +5,12 @@ using UnityEngine;
 public class PestoMovement : NPC_Movement
 {
     public Animator animator;
-    public Rigidbody rigidbody;
     // determines how fast we want pesto to be
-    public float speed;
+    public float deceleration;
+    public float minSpeed;
+    
+    // initial Speed
+    public float power;
     public bool crying;
 
     // this is to determine if pesto is moving
@@ -22,8 +25,6 @@ public class PestoMovement : NPC_Movement
     /// </summary>
     void Start()
     {
-        // immediatly get the rigidbody of Pesto
-        rigidbody = GetComponent<Rigidbody>();
 
     }
 
@@ -35,11 +36,13 @@ public class PestoMovement : NPC_Movement
         if (questIsActive)
         {
             animator.SetBool("isMoving", true);
-            Vector3 tempVect = new Vector3(1, 0, 0);
-            // apply our speed
-            tempVect = tempVect.normalized * speed * Time.deltaTime;
+
+
+            if (power > minSpeed) {
+                power = power - (Time.deltaTime * deceleration);
+            }
             // modify current position by tempVect
-            rigidbody.MovePosition(transform.position + tempVect);
+            transform.Translate(0, 0, power);
         } else
         {
             animator.SetBool("isMoving", false);
