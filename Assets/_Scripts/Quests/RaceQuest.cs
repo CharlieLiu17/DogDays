@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [System.Serializable]
 public class RaceQuest : Quest
@@ -9,11 +10,15 @@ public class RaceQuest : Quest
     // This is the actual dog treats that appear in the inventory.
     private InventoryItem reward;
     public int rewardAmount;
+    public int hasWon = 0;
+
+    public String pestoWinDialogue = "PestoWinDialogue";
+    public String pestoLoseDialogue = "PestoLoseDialogue";
     // because id is a public instance variable in Quest, it is inherited and set in the inspector
     // this is really weird
 
-    public GameObject pesto;
 
+    public GameObject pesto;
     // Does this not need to be instantiated?
     public treeCollideScript treeScript;
 
@@ -21,7 +26,8 @@ public class RaceQuest : Quest
     // Start is called before the first frame update
     private void Start()
     {
-        reward = new InventoryItem(dogTreats, rewardAmount);   
+        reward = new InventoryItem(dogTreats, rewardAmount);
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     #region Quest Event Methods
@@ -40,6 +46,9 @@ public class RaceQuest : Quest
     public override void OnComplete()
     {
         GameManager.Instance.AddItemToInventory(reward);
+        pesto.GetComponent<PestoMovement>().questIsActive = false;
+        pesto.GetComponent<DialogueHandler>().setDialogueName(pestoLoseDialogue);
+        pesto.GetComponent<PestoMovement>().crying = true;
         GameManager.Instance.RemoveQuestByID(id);
         UIManager.Instance.UpdateQuestsUI();
     }
@@ -51,10 +60,13 @@ public class RaceQuest : Quest
     {
         // This is called once either Pesto or main character enter tree and quest is active
 
-
+        //haswon = 1 means pesto won.
         if (treeScript.GetWhoEntered().Equals(pesto)) 
         {
             print("pesto won you should be sad");
+            pesto.GetComponent<DialogueHandler>().setDialogueName(pestoWinDialogue);
+            pesto.GetComponent<PestoMovement>().questIsActive = false;
+            hasWon = 1;
         } else
         {
             this.OnComplete();
@@ -62,8 +74,18 @@ public class RaceQuest : Quest
     }
     public override void OnSpeakToNPC()
     {
-        return;
+        if (GameManager.Instance.getNpcEngaged().Equals(pesto) && hasWon == 2)
+        {
+            pesto.GetComponent<DialogueHandler>().DialogueName = pestoLoseDialogue;
+            GameManager.Instance.AddItemToInventory(reward);
+            GameManager.Instance.RemoveQuestByID(id);
+            UIManager.Instance.UpdateQuestsUI();
+        }
     }
     #endregion
-
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        pesto = GameObject.Find("Pesto Please Don't Leave");
+        treeScript = GameObject.Find("Quest Tree").GetComponent<treeCollideScript>();
+    }
 }

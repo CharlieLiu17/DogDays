@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PestoMovement : MonoBehaviour 
+public class PestoMovement : NPC_Movement
 {
     public Animator animator;
     public Rigidbody rigidbody;
     // determines how fast we want pesto to be
     public float speed;
+    public bool crying;
 
     // this is to determine if pesto is moving
     private bool isMoving = false;
@@ -38,7 +39,15 @@ public class PestoMovement : MonoBehaviour
             // apply our speed
             tempVect = tempVect.normalized * speed * Time.deltaTime;
             // modify current position by tempVect
-            rigidbody.AddForce(tempVect);
+            rigidbody.MovePosition(transform.position + tempVect);
+        } else
+        {
+            animator.SetBool("isMoving", false);
+        }
+        if (crying && GameManager.Instance.getNpcEngaged().Equals(this.gameObject))
+        {
+            GetComponent<AudioSource>().Play();
+            crying = false;
         }
     }
 

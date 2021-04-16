@@ -9,7 +9,7 @@ public class NPC_Movement : MonoBehaviour
     protected Animator anim;
     protected NavMeshAgent agent;
     public float idleTime;
-    public bool inDialogue;
+    public bool inDialogue = false;
     // Start is called before the first frame update
     void Start()
     {

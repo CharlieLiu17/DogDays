@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<DialogueEntry>
+  <DisplayText> ...I'll beat you next time. I'm gonna go train more with Yoon Bird. This isn't over, ${currentDog}</DisplayText>
+  <Options>
+    <Option>
+      <SelectOnEnterPressed>true</SelectOnEnterPressed>
+      <DisplayText>Ok</DisplayText>
+      <NextDialogue></NextDialogue>
+      
+    </Option>
+  </Options>
+</DialogueEntry>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <DialogueEntry>
-  <DisplayText>Cod: I just want to kick it around again...</DisplayText>
+  <DisplayText>Pesto: Alright let's go!</DisplayText>
     <Options>
       <Option>
         <SelectOnEnterPressed>true</SelectOnEnterPressed>
@@ -9,7 +9,7 @@
         <Events>
         <Event>
           <Type>GiveQuest</Type>
-          <QuestID>1</QuestID>
+          <QuestID>5</QuestID>
         </Event>
         <Event>
           <Type>EndDialogue</Type>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<DialogueEntry>
+  <DisplayText> However, I pity you and your pathetic life, so I'll give you some dog treats.</DisplayText>
+  <Options>
+    <Option>
+      <SelectOnEnterPressed>true</SelectOnEnterPressed>
+      <DisplayText>Ok</DisplayText>
+      <NextDialogue></NextDialogue>
+      <Events>
+        <Event>
+          <Type>EndDialogue</Type>
+        </Event>
+      </Events>
+    </Option>
+  </Options>
+</DialogueEntry>
