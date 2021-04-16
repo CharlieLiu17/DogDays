@@ -32,10 +32,10 @@ public class treeCollideScript : MonoBehaviour
         // if pesto hits -> reset as if nothing happened at all. Add sad text
         
         // We are storing what collides with the tree so we can check in race quest.
-        this.other = other;    
-
-
-        if (GameManager.Instance.getCurrentDog().Equals(other.gameObject) || other.Equals(pesto)) {
+        this.other = other;
+        
+        if (GameManager.Instance.getCurrentDog().Equals(other.gameObject) || other.gameObject.Equals(pesto)) {
+            
             // `Instance` effectively makes script into a static object.
             // this is triggering the Enter Region method on all active quests
             GameManager.Instance.TriggerQuestEvent(QuestEvent.ENTER_REGION);    
