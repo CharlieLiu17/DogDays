@@ -124,6 +124,7 @@ public class ThirdPersonMovement : MonoBehaviour
     private void OnDisable()
     {
         jumpBool = false;
+        anim.SetBool("Jump Bool", false);
         anim.SetInteger("Movement Int", 0); //change this to ai script later
         controller.center = new Vector3(controller.center.x, colliderY, controller.center.z);
 

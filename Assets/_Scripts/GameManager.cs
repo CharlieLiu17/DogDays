@@ -22,6 +22,8 @@ public class GameManager : MonoBehaviour
     private GameObject npcEngaged;
     private bool inDoor;
     public Transform[] finalTransforms;
+    public bool finale;
+    public Item dogTreats;
 
 
     public CinemachineFreeLook freeLookScript;

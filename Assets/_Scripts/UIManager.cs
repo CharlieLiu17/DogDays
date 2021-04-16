@@ -278,6 +278,15 @@ public class UIManager : MonoBehaviour
             }
             GameManager.Instance.CursorLocked = true;
             GameManager.Instance.setNpcEngaged(null);
+            if (GameManager.Instance.finale)
+            {
+                GameObject.Find("Main Camera").GetComponent<AudioSource>().Play();
+            }
+            else if (GameManager.Instance.HasItem(GameManager.Instance.dogTreats, 65) && !GameManager.Instance.finale)
+            {
+                GameManager.Instance.LoadNextScene(5, GameManager.Instance.finalTransforms);
+                GameManager.Instance.finale = true;
+            }
             return;
         } else
         {

@@ -51,10 +51,10 @@ public class RaceQuest : Quest
         GameManager.Instance.AddItemToInventory(reward);
         GameManager.Instance.RemoveQuestByID(id);
         UIManager.Instance.UpdateQuestsUI();
-        if (GameManager.Instance.HasItem(dogTreats, 65))
+        /**if (GameManager.Instance.HasItem(dogTreats, 65))
         {
             GameManager.Instance.LoadNextScene(5, GameManager.Instance.finalTransforms);
-        }
+        }**/
     }
     public override void OnObtainItem(InventoryItem item)
     {
@@ -76,6 +76,8 @@ public class RaceQuest : Quest
             pesto.GetComponent<PestoMovement>().crying = true;
             hasWon = 2;
         }
+        treeScript.GetComponent<BoxCollider>().enabled = false;
+        treeScript.enabled = false;
     }
     public override void OnSpeakToNPC()
     {
@@ -95,7 +97,7 @@ public class RaceQuest : Quest
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         pesto = GameObject.Find("Pesto Please Don't Leave");
-        if (GameObject.Find("QuestTree") != null)
+        if (GameObject.Find("Quest Tree") != null)
         {
             treeScript = GameObject.Find("Quest Tree").GetComponent<treeCollideScript>();
         }

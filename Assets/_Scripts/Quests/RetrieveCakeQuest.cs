@@ -29,11 +29,11 @@ public class RetrieveCakeQuest : Quest //monobehavior "abstract class"
         if (GameManager.Instance.HasItem(cakeItem, 1))
         {
             StartCoroutine(DisplayDialogueAfterPause());
-        }
+        }/**
         if (GameManager.Instance.HasItem(dogTreats, 65))
         {
             GameManager.Instance.LoadNextScene(5, GameManager.Instance.finalTransforms);
-        }
+        }**/
     }
 
     private IEnumerator DisplayDialogueAfterPause()
