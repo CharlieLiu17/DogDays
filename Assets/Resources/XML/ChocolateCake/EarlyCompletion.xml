@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<DialogueEntry>
+	<DisplayText>Tuna: ${currentDog}!! You already ate my cake?! I was looking forward to eating that later!</DisplayText>
+	<Options>
+		<Option>
+			<SelectOnEnterPressed>true</SelectOnEnterPressed>
+			<DisplayText>Yum.</DisplayText>
+			<NextDialogue></NextDialogue>
+		</Option>
+	</Options>
+</DialogueEntry>

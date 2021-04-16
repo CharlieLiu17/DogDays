@@ -9,7 +9,7 @@
         <Events>
         <Event>
           <Type>GiveQuest</Type>
-          <QuestID>5</QuestID>
+          <QuestID>1</QuestID>
         </Event>
         <Event>
           <Type>EndDialogue</Type>

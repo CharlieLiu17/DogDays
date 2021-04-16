@@ -18,18 +18,20 @@ public class Quest : MonoBehaviour
 // Should be called infrequently and mainly used for resolving bugs.
 // For example, in a fetch quest we might use this to resolve the case where OnObtainItem() doesn't trigger when it should
     public virtual void OnUpdate() { }
+    public virtual void OnStart() { }
     // Called when the quest is complete and runs some code for rewards, starting a new quest, etc.
     // For example: you collect all 3 bells, OnComplete is called and gives you 500 Gold and a new quest to collect 5 whistles
     public virtual void OnComplete() { }
-    public virtual void OnObtainItem() { }
+    public virtual void OnObtainItem(InventoryItem item) { }
     public virtual void OnEnterRegion() { }
     public virtual void OnSpeakToNPC() { }
-    public virtual void OnRemoveItem() { }
+    public virtual void OnRemoveItem(InventoryItem item) { }
     #endregion
 }
 // These are numbered so they correspond to QuestTypes and can be matched to them with a cast
 public enum QuestEvent
 {
+    START = -3,
     UPDATE = -2,
     COMPLETE = -1,
     OBTAIN_ITEM = 0,

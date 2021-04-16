@@ -33,7 +33,7 @@ public class WatermelonQuest : Quest //monobehavior "abstract class"
     // For example, in a fetch quest we might use this to resolve the case where OnObtainItem() doesn't trigger when it should
     public override void OnUpdate()
     {
-        OnObtainItem();
+        OnObtainItem(null);
     }
     // Called when the quest is complete and runs some code for rewards, starting a new quest, etc.
     // For example: you collect all 3 bells, OnComplete is called and gives you 500 Gold and a new quest to collect 5 whistles
@@ -43,7 +43,7 @@ public class WatermelonQuest : Quest //monobehavior "abstract class"
         GameManager.Instance.RemoveQuestByID(id);
         UIManager.Instance.UpdateQuestsUI();
     }
-    public override void OnObtainItem()
+    public override void OnObtainItem(InventoryItem item)
     {
         Predicate<InventoryItem> predicate = FindItem;
         if (Array.Find(GameManager.Instance.GetAllItemsAsArray(), predicate) != null)
@@ -66,10 +66,6 @@ public class WatermelonQuest : Quest //monobehavior "abstract class"
             OnComplete();
             retrieved = false;
         }
-    }
-    public override void OnRemoveItem()
-    {
-        return;
     }
     #endregion
 

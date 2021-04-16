@@ -115,6 +115,7 @@ public class GameManager : MonoBehaviour
         {
             activeQuests.Add(quest);
             UIManager.Instance.UpdateQuestsUI();
+            TriggerQuestEvent(QuestEvent.START);
         }
     }
     public void RemoveQuestByName(string name)
@@ -154,13 +155,10 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-    public void TriggerQuestEvent(QuestEvent qe)
+    public void TriggerQuestEvent(QuestEvent qe, InventoryItem item = null)
     {
-        // Check if we have a quest of the right type before calling the method on all the quests
-        // We can cast QuestEvents to QuestTypes, see bottom of Quest class for explanation
-        // If (int) qe is less than zero that means it's a COMPLETE or UPDATE call which should always go through
-        //if ((int)qe < 0 /**|| hasQuestType[(QuestTypes)qe] **/)
-        //{
+        try
+        {
             foreach (Quest quest in activeQuests)
             {
                 switch (qe)
@@ -175,19 +173,26 @@ public class GameManager : MonoBehaviour
                         quest.OnEnterRegion();
                         break;
                     case QuestEvent.OBTAIN_ITEM:
-                        quest.OnObtainItem();
+                        quest.OnObtainItem(item);
                         break;
                     case QuestEvent.SPEAK_TO_NPC:
                         quest.OnSpeakToNPC();
                         break;
                     case QuestEvent.REMOVE_ITEM:
-                        quest.OnRemoveItem();
+                        quest.OnRemoveItem(item);
+                        break;
+                    case QuestEvent.START:
+                        quest.OnStart();
                         break;
                     default:
                         break;
                 }
             }
-        //}
+        }
+        catch (System.InvalidOperationException)
+        {
+            //Debug.LogError("Caught InvalidOperationException");
+        }
     }
 
     public GameObject getNpcEngaged()
@@ -220,7 +225,7 @@ public class GameManager : MonoBehaviour
         // Right now we're updating the display every time it changes. Once we have inventory be opened using a key we should call this method
         // then and only then. That goes for all the calls to UpdateInventoryUI you see in this file.
         UIManager.Instance.UpdateInventoryUI();
-        TriggerQuestEvent(QuestEvent.OBTAIN_ITEM);
+        TriggerQuestEvent(QuestEvent.OBTAIN_ITEM, new InventoryItem(item, amount));
     }
     public void AddItemToInventory(InventoryItem inventoryItem)
     {
@@ -235,7 +240,7 @@ public class GameManager : MonoBehaviour
             inventory.Add(inventoryItem);
         }
         UIManager.Instance.UpdateInventoryUI();
-        TriggerQuestEvent(QuestEvent.OBTAIN_ITEM);
+        TriggerQuestEvent(QuestEvent.OBTAIN_ITEM, inventoryItem);
     }
     // Amount defaults to 1 because removing 0 doesn't make sense.
     public void RemoveItemFromInventory(Item item, int amount = 1)
@@ -249,6 +254,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            TriggerQuestEvent(QuestEvent.REMOVE_ITEM, correspondingEntry);
             correspondingEntry.amount -= amount;
             // If we have a quantity of <= to 0, we take the item entry out
             if (correspondingEntry.amount <= 0)
@@ -257,7 +263,6 @@ public class GameManager : MonoBehaviour
             }
         }
         UIManager.Instance.UpdateInventoryUI();
-        TriggerQuestEvent(QuestEvent.REMOVE_ITEM);
     }
     public void RemoveItemFromInventory(InventoryItem inventoryItem)
     {
@@ -275,10 +280,10 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            TriggerQuestEvent(QuestEvent.REMOVE_ITEM, correspondingEntry);
             inventory.Remove(correspondingEntry);
         }
         UIManager.Instance.UpdateInventoryUI();
-        TriggerQuestEvent(QuestEvent.REMOVE_ITEM);
         foreach (InventoryItem item in inventory)
         {
             Debug.Log(item.ToString());
