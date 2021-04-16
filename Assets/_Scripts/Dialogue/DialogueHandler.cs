@@ -17,6 +17,9 @@ public class DialogueHandler : MonoBehaviour
     [SerializeField]
     private string _dialogueName;
 
+    [SerializeField]
+    private bool displayOnStart;
+
     public string DialogueName
     {
         get { return _dialogueName; }
@@ -27,8 +30,14 @@ public class DialogueHandler : MonoBehaviour
             {
                 UIManager.Instance.DialoguePanelShown = false;
                 GameManager.Instance.getCurrentDog().GetComponent<ThirdPersonMovement>().enabled = true;
-                hm.inDialogue = false;
-                vcam.enabled = false;
+                if (hm != null)
+                {
+                    hm.inDialogue = false;
+                }
+                if (vcam != null)
+                {
+                    vcam.enabled = false;
+                }
                 GameManager.Instance.freeLookScript.enabled = true;
                 GameManager.Instance.CursorLocked = true;
                 GameManager.Instance.setNpcEngaged(null);
@@ -52,7 +61,7 @@ public class DialogueHandler : MonoBehaviour
         TextAsset xmlText = Resources.Load<TextAsset>("XML/" + _dialogueName);
         if (xmlText == null)
         {
-            Debug.LogError("Could not find Dialogue XML file with path \"XML/" + _dialogueName + "\"");
+            Debug.LogError("DialogueHandler on " + gameObject +  ": Could not find Dialogue XML file with path \"XML/" + _dialogueName + "\"");
             return;
         }
         XmlDocument xml = new XmlDocument();
@@ -64,16 +73,12 @@ public class DialogueHandler : MonoBehaviour
     {
         GetCurrentDialogueFromXML();
         hm = GetComponent<NPC_Movement>();
-        //DisplayCurrentDialogue();
-
-        // Test Code
-        /*List<DialogueOption> options = new List<DialogueOption>();
-
-        DialogueEntry next = new DialogueEntry(this, "It worked! (That's a miracle!)", null);
-
-        options.Add(new DialogueOption(this, "Test Option 1", null, next, null, true));
-
-        _currentDialogue = new DialogueEntry(this, "This is test dialogue.", options);*/
+        
+        if (displayOnStart)
+        {
+            DisplayCurrentDialogue();
+            GameManager.Instance.CursorLocked = false;
+        }
     }
 
     void Update()

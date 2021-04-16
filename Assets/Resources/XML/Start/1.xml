@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<DialogueEntry>
+	<DisplayText>Hey, you there, Player!</DisplayText>
+	<Options>
+		<Option>
+			<SelectOnEnterPressed>true</SelectOnEnterPressed>
+			<DisplayText>...Yes?</DisplayText>
+			<NextDialogue>Start/2</NextDialogue>
+		</Option>
+	</Options>
+</DialogueEntry>

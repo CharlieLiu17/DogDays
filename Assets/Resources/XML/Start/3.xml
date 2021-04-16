@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<DialogueEntry>
+	<DisplayText>We didn't have time to make a proper instructions screen, so here's the run-down: Walk around and talk to NPCs!</DisplayText>
+	<Options>
+		<Option>
+			<SelectOnEnterPressed>true</SelectOnEnterPressed>
+			<DisplayText>Go on.</DisplayText>
+			<NextDialogue>Start/4</NextDialogue>
+		</Option>
+	</Options>
+</DialogueEntry>

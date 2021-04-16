@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<DialogueEntry>
+	<DisplayText>Listen, time is money, and we were running low on both of those. So I'm just gonna have to put it simple...</DisplayText>
+	<Options>
+		<Option>
+			<SelectOnEnterPressed>true</SelectOnEnterPressed>
+			<DisplayText>...</DisplayText>
+			<NextDialogue>Start/3</NextDialogue>
+		</Option>
+	</Options>
+</DialogueEntry>

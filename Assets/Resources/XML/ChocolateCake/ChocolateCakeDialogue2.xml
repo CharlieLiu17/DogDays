@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<DialogueEntry>
+  <DisplayText> Tuna: It's on the stove now and I can't wait to eat it later! But that cake is not for dogs, got it? </DisplayText>
+    <Options>
+      <Option>
+        <SelectOnEnterPressed>true</SelectOnEnterPressed>
+        <DisplayText>Next</DisplayText>
+        <NextDialogue>ChocolateCake/ChocolateCakeDialogue3</NextDialogue>
+      </Option>
+    </Options>
+</DialogueEntry>
