@@ -50,6 +50,10 @@ public class SoccerBallQuest : Quest
         GameManager.Instance.AddItemToInventory(reward);
         GameManager.Instance.RemoveQuestByID(id);
         UIManager.Instance.UpdateQuestsUI();
+        if (GameManager.Instance.HasItem(dogTreats, 65))
+        {
+            GameManager.Instance.LoadNextScene(5, GameManager.Instance.finalTransforms);
+        }
     }
     public override void OnObtainItem(InventoryItem item)
     {

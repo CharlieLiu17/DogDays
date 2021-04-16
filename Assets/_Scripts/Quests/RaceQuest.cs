@@ -53,7 +53,7 @@ public class RaceQuest : Quest
         UIManager.Instance.UpdateQuestsUI();
         if (GameManager.Instance.HasItem(dogTreats, 65))
         {
-            GameManager.Instance.LoadNextScene(4, finalTransforms);
+            GameManager.Instance.LoadNextScene(5, GameManager.Instance.finalTransforms);
         }
     }
     public override void OnObtainItem(InventoryItem item)
@@ -95,6 +95,9 @@ public class RaceQuest : Quest
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         pesto = GameObject.Find("Pesto Please Don't Leave");
-        treeScript = GameObject.Find("Quest Tree").GetComponent<treeCollideScript>();
+        if (GameObject.Find("QuestTree") != null)
+        {
+            treeScript = GameObject.Find("Quest Tree").GetComponent<treeCollideScript>();
+        }
     }
 }

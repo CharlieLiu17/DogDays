@@ -8,6 +8,6 @@ public class TurnOnAtStart : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //fadeIn.SetActive(true);
+        fadeIn.SetActive(true);
     } 
 }

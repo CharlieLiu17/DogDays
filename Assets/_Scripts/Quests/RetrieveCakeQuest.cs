@@ -30,6 +30,10 @@ public class RetrieveCakeQuest : Quest //monobehavior "abstract class"
         {
             StartCoroutine(DisplayDialogueAfterPause());
         }
+        if (GameManager.Instance.HasItem(dogTreats, 65))
+        {
+            GameManager.Instance.LoadNextScene(5, GameManager.Instance.finalTransforms);
+        }
     }
 
     private IEnumerator DisplayDialogueAfterPause()
@@ -49,6 +53,10 @@ public class RetrieveCakeQuest : Quest //monobehavior "abstract class"
         GameManager.Instance.RemoveQuestByID(id);
         UIManager.Instance.UpdateQuestsUI();
         GameObject.Find("Tuna").GetComponent<DialogueHandler>().setDialogueName("ChocolateCake/EarlyCompletion");
+        if (GameManager.Instance.HasItem(dogTreats, 65))
+        {
+            GameManager.Instance.LoadNextScene(5, GameManager.Instance.finalTransforms);
+        }
     }
     public override void OnObtainItem(InventoryItem item)
     {

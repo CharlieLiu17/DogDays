@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<DialogueEntry>
+  <DisplayText>What's this truth? Oh... you two are dead. I thought you guys figured it out by now, eating chocolate cake and all that without any consequences.</DisplayText>
+  <Options>
+    <Option>
+      <SelectOnEnterPressed>true</SelectOnEnterPressed>
+      <DisplayText>Uh.</DisplayText>
+      <NextDialogue>Final/5</NextDialogue>
+    </Option>
+  </Options>
+</DialogueEntry>

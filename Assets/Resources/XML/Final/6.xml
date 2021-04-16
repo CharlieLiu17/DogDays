@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<DialogueEntry>
+  <DisplayText> is that Kobe, you are a good boy and kali, you are a good girl. So Dog Park truly deserves the both of you.</DisplayText>
+  <Options>
+    <Option>
+      <SelectOnEnterPressed>true</SelectOnEnterPressed>
+      <DisplayText>ok!</DisplayText>
+      <NextDialogue></NextDialogue>
+    </Option>
+  </Options>
+</DialogueEntry>

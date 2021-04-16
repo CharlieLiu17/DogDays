@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<DialogueEntry>
+  <DisplayText> Where is this? This is the Dog Park.</DisplayText>
+  <Options>
+    <Option>
+      <SelectOnEnterPressed>true</SelectOnEnterPressed>
+      <DisplayText>Yay!</DisplayText>
+      <NextDialogue>Final/3</NextDialogue>
+    </Option>
+  </Options>
+</DialogueEntry>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<DialogueEntry>
+  <DisplayText>Welcome, you two.</DisplayText>
+  <Options>
+    <Option>
+      <SelectOnEnterPressed>true</SelectOnEnterPressed>
+      <DisplayText>Hello?</DisplayText>
+      <NextDialogue>Final/2</NextDialogue>
+    </Option>
+  </Options>
+</DialogueEntry>

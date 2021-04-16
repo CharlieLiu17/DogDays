@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<DialogueEntry>
+  <DisplayText>We wanted to slowly let you know the truth, so we put you two in a setting where you felt comfortable.</DisplayText>
+  <Options>
+    <Option>
+      <SelectOnEnterPressed>true</SelectOnEnterPressed>
+      <DisplayText>Wait..</DisplayText>
+      <NextDialogue>Final/4</NextDialogue>
+    </Option>
+  </Options>
+</DialogueEntry>

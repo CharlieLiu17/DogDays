@@ -28,7 +28,7 @@ public class ThirdPersonMovement : MonoBehaviour
 
     private void Start()
     {
-        cam = GameObject.Find("Main Camera").transform;
+        cam = GameObject.FindGameObjectWithTag("MainCamera").transform;
         buildIndex = SceneManager.GetActiveScene().buildIndex;
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
@@ -130,6 +130,8 @@ public class ThirdPersonMovement : MonoBehaviour
     }
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        cam = GameObject.Find("Main Camera").transform;
+        
+        cam = GameObject.FindGameObjectWithTag("MainCamera").transform;
+        Debug.Log("HELLJFOIJDASOIFJ");
     }
 }

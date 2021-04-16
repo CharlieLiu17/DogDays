@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     private GameObject[] dontDestroy; //THE REFERENCES TO THE DOGS
     private GameObject npcEngaged;
     private bool inDoor;
+    public Transform[] finalTransforms;
 
 
     public CinemachineFreeLook freeLookScript;
@@ -77,11 +78,11 @@ public class GameManager : MonoBehaviour
             if (value)
             {
                 Cursor.lockState = CursorLockMode.Locked;
-                Cursor.visible = true;
+                Cursor.visible = false;
             } else
             {
                 Cursor.lockState = CursorLockMode.None;
-                Cursor.visible = false;
+                Cursor.visible = true;
             }
         }
     }
@@ -102,12 +103,23 @@ public class GameManager : MonoBehaviour
             { QuestTypes.OBTAIN, false },
             { QuestTypes.SPEAK, false }
         };
-
+        SceneManager.sceneLoaded += OnSceneLoaded;
 
         // Testing inventory system
         //AddItemToInventory(Reference.Instance.GetItemByID(1), 1);
         //AddItemToInventory(Reference.Instance.GetItemByID(0), 3);
         //AddItemToInventory(Reference.Instance.GetItemByID(2), 1);
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.buildIndex == 5)
+        {
+            DialogueHandler dh = GameManager.Instance.getCurrentDog().GetComponent<DialogueHandler>();
+            dh.setDialogueName("Final/1");
+            dh.DisplayCurrentDialogue();
+            UIManager.Instance.DialogueInitiationTextShown = false;
+        }
     }
 
     #region Quests
@@ -395,3 +407,4 @@ public enum Dogs {
     Kobe, 
     Kali 
 }
+
