@@ -46,9 +46,6 @@ public class RaceQuest : Quest
     public override void OnComplete()
     {
         GameManager.Instance.AddItemToInventory(reward);
-        pesto.GetComponent<PestoMovement>().questIsActive = false;
-        pesto.GetComponent<DialogueHandler>().setDialogueName(pestoLoseDialogue);
-        pesto.GetComponent<PestoMovement>().crying = true;
         GameManager.Instance.RemoveQuestByID(id);
         UIManager.Instance.UpdateQuestsUI();
     }
@@ -61,25 +58,30 @@ public class RaceQuest : Quest
         // This is called once either Pesto or main character enter tree and quest is active
 
         //haswon = 1 means pesto won.
-        if (treeScript.GetWhoEntered().Equals(pesto)) 
+        Debug.Log(treeScript.GetWhoEntered());
+        if (GameObject.ReferenceEquals(pesto, treeScript.GetWhoEntered())) 
         {
-            print("pesto won you should be sad");
-            pesto.GetComponent<DialogueHandler>().setDialogueName(pestoWinDialogue);
             pesto.GetComponent<PestoMovement>().questIsActive = false;
             hasWon = 1;
         } else
         {
-            this.OnComplete();
+            pesto.GetComponent<PestoMovement>().questIsActive = false;
+            pesto.GetComponent<PestoMovement>().crying = true;
+            hasWon = 2;
         }
     }
     public override void OnSpeakToNPC()
     {
         if (GameManager.Instance.getNpcEngaged().Equals(pesto) && hasWon == 2)
         {
+            Debug.Log("wow341");
             pesto.GetComponent<DialogueHandler>().DialogueName = pestoLoseDialogue;
-            GameManager.Instance.AddItemToInventory(reward);
-            GameManager.Instance.RemoveQuestByID(id);
-            UIManager.Instance.UpdateQuestsUI();
+            OnComplete();
+        } else if (GameManager.Instance.getNpcEngaged().Equals(pesto) && hasWon == 1)
+        {
+            Debug.Log("hello234");
+            pesto.GetComponent<DialogueHandler>().DialogueName = pestoWinDialogue;
+            OnComplete();
         }
     }
     #endregion
